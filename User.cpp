@@ -1,6 +1,6 @@
 #include "User.h"
 
-void User::setId(int newId) {
+void User::setUserId(int newId) {
 	if (newId >= 0)
 		userId = newId;
 }

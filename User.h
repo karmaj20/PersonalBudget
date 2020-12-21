@@ -12,7 +12,7 @@ class User {
 	string surname;
 
 public:
-	void setId(int newId);
+	void setUserId(int newId);
 	void setLogin(string newLogin);
 	void setPassword(string newPassword);
 	void setName(string newName);
