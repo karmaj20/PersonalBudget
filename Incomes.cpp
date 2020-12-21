@@ -42,7 +42,7 @@ string Incomes::getDate()
 
 string Incomes::getItem()
 {
-	return item);
+	return item;
 }
 
 float Incomes::getAmount()
