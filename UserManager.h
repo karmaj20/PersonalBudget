@@ -19,6 +19,7 @@ public:
 	void signupUser();
 	int loginUser();
 	void logoutUser();
+	bool isUserLogged();
 };
 
 #endif
