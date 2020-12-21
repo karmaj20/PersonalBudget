@@ -89,3 +89,8 @@ int UserManager::loginUser()
 	return 0;
 }
 
+void UserManager::logoutUser()
+{
+	idLoggedUser = 0;
+}
+

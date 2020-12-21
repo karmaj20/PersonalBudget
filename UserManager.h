@@ -18,6 +18,7 @@ class UserManager {
 public:
 	void signupUser();
 	int loginUser();
+	void logoutUser();
 };
 
 #endif
