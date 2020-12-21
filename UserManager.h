@@ -20,6 +20,7 @@ public:
 	int loginUser();
 	void logoutUser();
 	bool isUserLogged();
+	void changePasswordLoggedUser();
 };
 
 #endif

@@ -102,3 +102,17 @@ bool UserManager::isUserLogged()
 		return false;
 }
 
+void UserManager::changePasswordLoggedUser()
+{
+	string newPassword = "";
+	cout << "What is your new password ?";
+	cin >> newPassword;
+
+	for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++){
+		if (itr->getId() == idLoggedUser){
+			itr->setPassword(newPassword);
+			cout << "The password has been changed" << endl << endl;
+			system("pause");
+		}
+	}
+}
