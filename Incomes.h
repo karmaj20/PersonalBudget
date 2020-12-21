@@ -4,4 +4,8 @@
 
 using namespace std;
 
+class Incomes {
+
+};
+
 #endif
