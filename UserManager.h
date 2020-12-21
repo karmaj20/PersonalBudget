@@ -9,6 +9,7 @@
 using namespace std;
 
 class UserManager {
+	int idLoggedUser;
 	vector<User> users;
 	User getNewUserData();
 	int loadNewUserId();
@@ -16,6 +17,7 @@ class UserManager {
 
 public:
 	void signupUser();
+	int loginUser();
 };
 
 #endif

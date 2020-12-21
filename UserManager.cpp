@@ -54,3 +54,38 @@ void UserManager::signupUser()
 	cout << endl << "Account creation was succesful" << endl << endl;
 	system("pause");
 }
+
+int UserManager::loginUser()
+{
+	User user;
+	string login = "", password = "";
+
+	cout << "What is your login ? ";
+	cin >> login;
+
+	vector <User>::iterator itr = users.begin();
+	while (itr != users.end()) {
+		if (itr->getLogin() == login) {
+			for (int attempts = 3; attempts > 0; attempts--) {
+				cout << "What is your password ? Attempts left: " << attempts << ": ";
+				cin >> password;
+				user.setPassword(password);
+
+				if (itr->getPassword() == password) {
+					cout << endl << "Login was succesful." << endl << endl;
+					system("pause");
+					idLoggedUser = itr->getId();
+					return idLoggedUser;
+				}
+			}
+			cout << "3 times entered password was wrong." << endl;
+			system("pause");
+			return 0;
+		}
+		itr++;
+	}
+	cout << "There is no user with that login." << endl << endl;
+	system("pause");
+	return 0;
+}
+
