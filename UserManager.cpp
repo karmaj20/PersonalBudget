@@ -45,3 +45,12 @@ bool UserManager::isLoginExist(string login)
 	}
 	return false;
 }
+
+void UserManager::signupUser()
+{
+	User user = getNewUserData();
+	users.push_back(user);
+
+	cout << endl << "Account creation was succesful" << endl << endl;
+	system("pause");
+}

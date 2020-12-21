@@ -1,6 +1,7 @@
 #ifndef USERMANAGER_H
 #define USERMANAGER_H
 #include <iostream>
+#include <windows.h>
 #include <vector>
 
 #include "User.h"
@@ -12,6 +13,9 @@ class UserManager {
 	User getNewUserData();
 	int loadNewUserId();
 	bool isLoginExist(string login);
+
+public:
+	void signupUser();
 };
 
 #endif
