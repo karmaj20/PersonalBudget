@@ -1,0 +1,11 @@
+Debug/
+bin/
+obj/
+plan/
+PersonalBudget.vcxproj.*
+PersonalBudget.sln
+PersonalBudget.vcxproj
+.vs/
+users.xml
+incomes.xml
+expenses.xml
