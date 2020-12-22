@@ -3,9 +3,6 @@
 void UsersFile::addUserToFile(User user)
 {
 	CMarkup xml;
-	string login, password, name, surname;
-	int userId;
-
 	bool fileExists = xml.Load(filenameWithUsers);
 
 	if (!fileExists) {
@@ -22,8 +19,7 @@ void UsersFile::addUserToFile(User user)
 	xml.AddElem("name", user.getName());
 	xml.AddElem("surname", user.getSurname());
 
-	xml.Save("users.xml");
-	
+	xml.Save(filenameWithUsers);
 }
 
 vector <User> UsersFile::readUsersFromFile()
@@ -57,9 +53,39 @@ vector <User> UsersFile::readUsersFromFile()
 		strSN = xml.GetData();
 		user.setSurname(strSN);
 		xml.OutOfElem();
+
+		users.push_back(user);
 	}
 
-	users.push_back(user);
 
 	return users;
+}
+
+void UsersFile::saveUsersToFile(vector<User>& users)
+{
+	CMarkup xml;
+	User user;
+
+	bool fileExists = xml.Load(filenameWithUsers);
+
+	xml.ResetMainPos();
+	while (xml.FindElem())
+		xml.RemoveElem();
+
+	
+	xml.AddElem("Users");
+	for (int i = 0; i < users.size(); i++) {
+		xml.FindElem();
+		xml.IntoElem();
+		xml.AddElem("User");
+		xml.IntoElem();
+		xml.AddElem("id", users[i].getId());
+		xml.AddElem("login", users[i].getLogin());
+		xml.AddElem("password", users[i].getPassword());
+		xml.AddElem("name", users[i].getName());
+		xml.AddElem("surname", users[i].getSurname());
+		xml.OutOfElem();
+		xml.AddNode(CMarkup::MNT_COMMENT, "/User");
+		xml.Save(filenameWithUsers);
+	}
 }
