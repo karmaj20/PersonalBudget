@@ -5,5 +5,8 @@ using namespace std;
 
 int main() 
 {
+	PersonalBudget personalBudget;
 
+	personalBudget.signupUser();
+	personalBudget.loginUser();
 }
