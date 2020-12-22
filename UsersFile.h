@@ -18,7 +18,7 @@ public:
 
 	void addUserToFile(User user);
 	vector <User> readUsersFromFile();
-
+	void saveUsersToFile(vector <User>& users);
 };
 
 #endif
