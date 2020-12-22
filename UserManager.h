@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "User.h"
+#include "UsersFile.h"
 
 using namespace std;
 
