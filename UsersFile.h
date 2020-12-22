@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "User.h"
+#include "Markup.h"
 #include "AuxiliaryMethods.h"
 
 using namespace std;
