@@ -10,6 +10,9 @@ class PersonalBudget {
 	UserManager userManager;
 
 public:
+	PersonalBudget(string filenameWithUsers) :
+		userManager(filenameWithUsers) {};
+
 	void signupUser();
 	void loginUser();
 };

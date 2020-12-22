@@ -1,8 +1,10 @@
 #ifndef USERSFILE_H
 #define USERSFILE_H
 #include <iostream>
+#include <vector>
 
 #include "User.h"
+#include "Markup.h"
 #include "AuxiliaryMethods.h"
 
 using namespace std;
@@ -15,6 +17,7 @@ public:
 		filenameWithUsers(FILENAME_WITH_USERS) {};
 
 	void addUserToFile(User user);
+	vector <User> readUsersFromFile();
 
 };
 

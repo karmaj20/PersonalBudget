@@ -50,6 +50,7 @@ void UserManager::signupUser()
 {
 	User user = getNewUserData();
 	users.push_back(user);
+	usersFile.addUserToFile(user);
 
 	cout << endl << "Account creation was succesful" << endl << endl;
 	system("pause");
