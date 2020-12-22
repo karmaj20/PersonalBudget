@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <vector>
 
+#include "Markup.h"
 #include "User.h"
 #include "UsersFile.h"
 

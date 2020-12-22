@@ -11,7 +11,11 @@ class UsersFile {
 	string filenameWithUsers;
 
 public:
-	UsersFile(string FILENAME_WITH_USERS) : filenameWithUsers(FILENAME_WITH_USERS) {};
+	UsersFile(string FILENAME_WITH_USERS) :
+		filenameWithUsers(FILENAME_WITH_USERS) {};
+
+	void addUserToFile(User user);
+
 };
 
 #endif
