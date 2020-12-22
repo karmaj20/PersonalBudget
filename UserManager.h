@@ -19,7 +19,9 @@ class UserManager {
 	UsersFile usersFile;
 
 public:
-	UserManager(string filenameWithUsers) : usersFile(filenameWithUsers) {};
+	UserManager(string filenameWithUsers) : usersFile(filenameWithUsers) {
+		users = usersFile.readUsersFromFile();
+	};
 	void signupUser();
 	int loginUser();
 	void logoutUser();

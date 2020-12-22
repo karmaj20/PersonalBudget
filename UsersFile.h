@@ -1,6 +1,7 @@
 #ifndef USERSFILE_H
 #define USERSFILE_H
 #include <iostream>
+#include <vector>
 
 #include "User.h"
 #include "Markup.h"
@@ -16,6 +17,7 @@ public:
 		filenameWithUsers(FILENAME_WITH_USERS) {};
 
 	void addUserToFile(User user);
+	vector <User> readUsersFromFile();
 
 };
 
