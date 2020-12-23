@@ -19,13 +19,16 @@ class FinanceManager {
 	vector<Expense> expenses;
 
 	Income giveNewIncomeData();
+	Income giveNewIncomeChosenDate();
 	string presentDate();
+	string choseDate();
 	void displayIncomeData(Income income);
 	int loadNewIncomeId();
 	IncomesFile incomesFile;
 public:
 	FinanceManager(string filenameWithIncomes, int idLoggedUser) :
-		incomesFile(filenameWithIncomes), ID_LOGGED_USER(idLoggedUser){
+		incomesFile(filenameWithIncomes), ID_LOGGED_USER(idLoggedUser)
+	{
 		incomes = incomesFile.readIncomesFromFile(ID_LOGGED_USER);
 	};
 	void displayIncomes();

@@ -13,7 +13,6 @@ int main()
 	personalBudget.signupUser();
 	personalBudget.changePasswordLoggedUser();
 	*/
-	personalBudget.signupUser();
 	personalBudget.loginUser();
 	personalBudget.addIncome();
 	personalBudget.displayIncomes();

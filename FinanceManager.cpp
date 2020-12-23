@@ -24,6 +24,30 @@ Income FinanceManager::giveNewIncomeData()
     return income;
 }
 
+Income FinanceManager::giveNewIncomeChosenDate()
+{
+    Income income;
+    int incomeId = 0, userId = 0;
+    string date = "", item = "";
+    float amount = 0.0;
+
+    date = choseDate();
+    cout << "What is the category of income ?: ";
+    item = AuxiliaryMethods::loadLine();
+    income.setItem(item);
+
+    cout << "Write amount of income: ";
+    cin >> amount;
+
+    income.setIncomeId(loadNewIncomeId());
+    income.setUserId(ID_LOGGED_USER);
+    income.setDate(date);
+    income.setItem(item);
+    income.setAmount(amount);
+
+    return income;
+}
+
 string FinanceManager::presentDate()
 {
     string year, month, day;
@@ -61,6 +85,30 @@ string FinanceManager::presentDate()
     return date;
 }
 
+string FinanceManager::choseDate()
+{
+    int year, month, day;
+    string date;
+    cout << "Write date in format rrrr-mm-dd: ";
+    cin >> date;
+    vector <string> el;
+    stringstream ss(date);
+    string item;
+    while (getline(ss, item, '-')) {
+        el.push_back(item);
+    }
+
+    /*
+    year = AuxiliaryMethods::stringToIntConverter(el[0]);
+    month = AuxiliaryMethods::stringToIntConverter(el[1]);
+    day = AuxiliaryMethods::stringToIntConverter(el[2]);
+    */
+
+    date = el[0] + "-" + el[1] + "-" + el[2];
+
+    return date;
+}
+
 void FinanceManager::displayIncomes()
 {
     system("cls");
@@ -90,11 +138,25 @@ void FinanceManager::displayIncomeData(Income income)
 
 void FinanceManager::addIncome()
 {
-	cout << "Would you like to add income with present day or other date ?" << endl;
-    
-    Income income = giveNewIncomeData();
-    incomes.push_back(income);
-    incomesFile.addIncomeToFile(income);
+    cout << "           >>>INCOME MENU<<<          " << endl;
+    cout << "--------------------------------------" << endl;
+    cout << "1. Add income with present date" << endl;
+    cout << "2. Add income with chosen date" << endl;
+    char choice;
+    cin >> choice;
+    if (choice == '1') {
+        Income income = giveNewIncomeData();
+        incomes.push_back(income);
+        incomesFile.addIncomeToFile(income);
+    }
+    else if (choice == '2') {
+        Income income = giveNewIncomeChosenDate();
+        incomes.push_back(income);
+        incomesFile.addIncomeToFile(income);
+    }
+    else {
+        cout << "Press 1 or 2" << endl;
+    }
 
     cout << endl << "Income added succesfuly" << endl;
     system("pause");
