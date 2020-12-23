@@ -20,3 +20,7 @@ void PersonalBudget::displayUsers()
 	userManager.displayUsers();
 }
 
+void PersonalBudget::addIncome()
+{
+	financeManager.addIncome();
+}
