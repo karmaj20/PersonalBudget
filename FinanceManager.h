@@ -14,6 +14,7 @@ using namespace std;
 #include "AuxiliaryMethods.h"
 
 class FinanceManager {
+	const int ID_LOGGED_USER;
 	vector<Income> incomes;
 	vector<Expense> expenses;
 
@@ -23,8 +24,9 @@ class FinanceManager {
 	int loadNewIncomeId();
 	IncomesFile incomesFile;
 public:
-	FinanceManager(string filenameWithIncomes) : incomesFile(filenameWithIncomes) {
-		incomes = incomesFile.readIncomesFromFile();
+	FinanceManager(string filenameWithIncomes, int idLoggedUser) :
+		incomesFile(filenameWithIncomes), ID_LOGGED_USER(idLoggedUser){
+		incomes = incomesFile.readIncomesFromFile(ID_LOGGED_USER);
 	};
 	void displayIncomes();
 

@@ -3,7 +3,7 @@
 void IncomesFile::addIncomeToFile(Income income)
 {
 	CMarkup xml;
-	bool fileExists = xml.Load(filenameWithIncomes);
+	bool fileExists = xml.Load(FILENAME_WITH_INCOMES);
 	
 
 	if (!fileExists) {
@@ -20,15 +20,15 @@ void IncomesFile::addIncomeToFile(Income income)
 	xml.AddElem("Item", income.getItem());
 	xml.AddElem("Amount", income.getAmount());
 
-	xml.Save(filenameWithIncomes);
+	xml.Save(FILENAME_WITH_INCOMES);
 }
 
-vector<Income> IncomesFile::readIncomesFromFile()
+vector<Income> IncomesFile::readIncomesFromFile(int idLoggedUser)
 {
 	CMarkup xml;
 	Income income;
 	vector <Income> incomes;
-	xml.Load(filenameWithIncomes);
+	xml.Load(FILENAME_WITH_INCOMES);
 
 	xml.FindElem();
 	xml.IntoElem();

@@ -8,6 +8,11 @@ void PersonalBudget::signupUser()
 void PersonalBudget::loginUser()
 {
 	userManager.loginUser();
+
+	if (userManager.isUserLogged())
+	{
+		financeManager = new FinanceManager(FILENAME_WITH_INCOMES, userManager.loadIdLoggedUser());
+	}
 }
 
 void PersonalBudget::changePasswordLoggedUser()
@@ -22,10 +27,10 @@ void PersonalBudget::displayUsers()
 
 void PersonalBudget::addIncome()
 {
-	financeManager.addIncome();
+	financeManager->addIncome();
 }
 
 void PersonalBudget::displayIncomes()
 {
-	financeManager.displayIncomes();
+	financeManager->displayIncomes();
 }

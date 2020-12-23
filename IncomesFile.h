@@ -9,14 +9,14 @@
 using namespace std;
 
 class IncomesFile {
-	string filenameWithIncomes;
+	const string FILENAME_WITH_INCOMES;
 
 public: 
-	IncomesFile(string FILENAME_WITH_INCOMES) :
-		filenameWithIncomes(FILENAME_WITH_INCOMES) {};
+	IncomesFile(string filenameWithIncomes) :
+		FILENAME_WITH_INCOMES(filenameWithIncomes) {};
 	
 	void addIncomeToFile(Income income);
-	vector <Income> readIncomesFromFile();
+	vector <Income> readIncomesFromFile(int idLoggedUser);
 };
 
 #endif

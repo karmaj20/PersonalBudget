@@ -29,6 +29,7 @@ public:
 	void changePasswordLoggedUser();
 	void saveUsersToFile();
 	void displayUsers();
+	int loadIdLoggedUser();
 };
 
 #endif

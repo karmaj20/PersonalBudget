@@ -11,10 +11,10 @@ int main()
 	/*
 	personalBudget.signupUser();
 	personalBudget.signupUser();
-	personalBudget.signupUser();
-	personalBudget.loginUser();
 	personalBudget.changePasswordLoggedUser();
 	*/
+	personalBudget.signupUser();
+	personalBudget.loginUser();
 	personalBudget.addIncome();
 	personalBudget.displayIncomes();
 }

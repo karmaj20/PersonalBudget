@@ -16,7 +16,7 @@ Income FinanceManager::giveNewIncomeData()
     cin >> amount;
 
     income.setIncomeId(loadNewIncomeId());
-    income.setUserId(userId);
+    income.setUserId(ID_LOGGED_USER);
     income.setDate(date);
     income.setItem(item);
     income.setAmount(amount);
