@@ -18,6 +18,15 @@ int AuxiliaryMethods::stringToIntConverter(string number)
 	return intNumber;
 }
 
+float AuxiliaryMethods::stringToFloatConverter(string number)
+{
+	float intNumber;
+	istringstream iss(number);
+	iss >> intNumber;
+
+	return intNumber;
+}
+
 string AuxiliaryMethods::loadLine()
 {
 	string entry = "";

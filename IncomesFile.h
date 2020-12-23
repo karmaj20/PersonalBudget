@@ -16,6 +16,7 @@ public:
 		filenameWithIncomes(FILENAME_WITH_INCOMES) {};
 	
 	void addIncomeToFile(Income income);
+	vector <Income> readIncomesFromFile();
 };
 
 #endif
