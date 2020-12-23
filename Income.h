@@ -5,11 +5,11 @@
 using namespace std;
 
 class Income {
-	int incomeId;
-	int userId;
-	string date;
-	string item;
-	float amount;
+	int incomeId = 0;
+	int userId = 0;
+	string date = "";
+	string item = "";
+	float amount = 0;
 
 public:
 	void setIncomeId(int newIncomeId);

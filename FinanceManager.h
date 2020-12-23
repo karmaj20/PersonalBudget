@@ -4,6 +4,7 @@
 #include <vector>
 #include <time.h>
 #include <string>
+#include <map>
 
 using namespace std;
 #include "Income.h"
@@ -22,7 +23,9 @@ class FinanceManager {
 	int loadNewIncomeId();
 	IncomesFile incomesFile;
 public:
-	FinanceManager(string filenameWithIncomes) : incomesFile(filenameWithIncomes) {};
+	FinanceManager(string filenameWithIncomes) : incomesFile(filenameWithIncomes) {
+		incomes = incomesFile.readIncomesFromFile();
+	};
 	void displayIncomes();
 
 	void addIncome();
