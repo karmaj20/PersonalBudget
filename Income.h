@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Incomes {
+class Income {
 	int incomeId;
 	int userId;
 	string date;
