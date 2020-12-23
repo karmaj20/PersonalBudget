@@ -9,6 +9,7 @@ class AuxiliaryMethods {
 public:
 	static string intToStringConverter(int number);
 	static int stringToIntConverter(string number);
+	static float stringToFloatConverter(string number);
 	static string loadLine();
 	static char loadChar();
 	static int loadInteger();

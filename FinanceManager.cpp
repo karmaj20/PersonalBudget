@@ -7,17 +7,42 @@ Income FinanceManager::giveNewIncomeData()
     string date = "", item = "";
     float amount = 0.0;
 
-    income.setIncomeId(incomeId);
-    income.setUserId(userId);
-
     date = presentDate();
-    income.setDate(date);
     cout << "What is the category of income ?: ";
     item = AuxiliaryMethods::loadLine();
     income.setItem(item);
 
     cout << "Write amount of income: ";
     cin >> amount;
+
+    income.setIncomeId(loadNewIncomeId());
+    income.setUserId(ID_LOGGED_USER);
+    income.setDate(date);
+    income.setItem(item);
+    income.setAmount(amount);
+
+    return income;
+}
+
+Income FinanceManager::giveNewIncomeChosenDate()
+{
+    Income income;
+    int incomeId = 0, userId = 0;
+    string date = "", item = "";
+    float amount = 0.0;
+
+    date = choseDate();
+    cout << "What is the category of income ?: ";
+    item = AuxiliaryMethods::loadLine();
+    income.setItem(item);
+
+    cout << "Write amount of income: ";
+    cin >> amount;
+
+    income.setIncomeId(loadNewIncomeId());
+    income.setUserId(ID_LOGGED_USER);
+    income.setDate(date);
+    income.setItem(item);
     income.setAmount(amount);
 
     return income;
@@ -35,7 +60,52 @@ string FinanceManager::presentDate()
     month = date.substr(4, 3);
     day = date.substr(8, 2);
 
+    map<string, string> months;
+    months = {
+        {"Jan", "01"},
+        {"Feb", "02"},
+        {"Mar", "03"},
+        {"Apr", "04"},
+        {"May", "05"},
+        {"Jun", "06"},
+        {"Jul", "07"},
+        {"Aug", "08"},
+        {"Sep", "09"},
+        {"Oct", "10"},
+        {"Nov", "11"},
+        {"Dec", "12"}
+    };
+
+    map<string, string>::iterator iter = months.find(month);
+    if (iter != months.end()) {
+        month = iter->second;
+    }
+
     date = year + '-' + month + "-" + day;
+    return date;
+}
+
+string FinanceManager::choseDate()
+{
+    int year, month, day;
+    string date;
+    cout << "Write date in format rrrr-mm-dd: ";
+    cin >> date;
+    vector <string> el;
+    stringstream ss(date);
+    string item;
+    while (getline(ss, item, '-')) {
+        el.push_back(item);
+    }
+
+    /*
+    year = AuxiliaryMethods::stringToIntConverter(el[0]);
+    month = AuxiliaryMethods::stringToIntConverter(el[1]);
+    day = AuxiliaryMethods::stringToIntConverter(el[2]);
+    */
+
+    date = el[0] + "-" + el[1] + "-" + el[2];
+
     return date;
 }
 
@@ -68,12 +138,33 @@ void FinanceManager::displayIncomeData(Income income)
 
 void FinanceManager::addIncome()
 {
-	cout << "Would you like to add income with present day or other date ?" << endl;
-    
-    Income income = giveNewIncomeData();
-
-    incomes.push_back(income);
+    cout << "           >>>INCOME MENU<<<          " << endl;
+    cout << "--------------------------------------" << endl;
+    cout << "1. Add income with present date" << endl;
+    cout << "2. Add income with chosen date" << endl;
+    char choice;
+    cin >> choice;
+    if (choice == '1') {
+        Income income = giveNewIncomeData();
+        incomes.push_back(income);
+        incomesFile.addIncomeToFile(income);
+    }
+    else if (choice == '2') {
+        Income income = giveNewIncomeChosenDate();
+        incomes.push_back(income);
+        incomesFile.addIncomeToFile(income);
+    }
+    else {
+        cout << "Press 1 or 2" << endl;
+    }
 
     cout << endl << "Income added succesfuly" << endl;
     system("pause");
+}
+
+int FinanceManager::loadNewIncomeId() {
+    if (incomes.empty() == true)
+        return 1;
+    else
+        return incomes.back().getIncomeId() + 1;
 }

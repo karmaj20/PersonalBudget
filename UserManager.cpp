@@ -35,6 +35,10 @@ int UserManager::loadNewUserId() {
 		return users.back().getId() + 1;
 }
 
+int UserManager::loadIdLoggedUser() {
+	return idLoggedUser;
+}
+
 bool UserManager::isLoginExist(string login)
 {
 	for (int i = 0; i < users.size(); i++) {

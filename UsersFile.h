@@ -10,11 +10,11 @@
 using namespace std;
 
 class UsersFile {
-	string filenameWithUsers;
+	const string FILENAME_WITH_USERS;
 
 public:
-	UsersFile(string FILENAME_WITH_USERS) :
-		filenameWithUsers(FILENAME_WITH_USERS) {};
+	UsersFile(string filenameWithUsers) :
+		FILENAME_WITH_USERS(filenameWithUsers) {};
 
 	void addUserToFile(User user);
 	vector <User> readUsersFromFile();

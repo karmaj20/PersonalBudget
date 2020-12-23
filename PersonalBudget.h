@@ -9,11 +9,19 @@ using namespace std;
 
 class PersonalBudget {
 	UserManager userManager;
-	FinanceManager financeManager;
-
+	FinanceManager* financeManager;
+	const string FILENAME_WITH_INCOMES;
 public:
-	PersonalBudget(string filenameWithUsers) :
-		userManager(filenameWithUsers) {};
+	PersonalBudget(string filenameWithUsers, string filenameWithIncomes) :
+		userManager(filenameWithUsers), FILENAME_WITH_INCOMES(filenameWithIncomes) 
+	{
+		financeManager = NULL;
+	};
+	~PersonalBudget() 
+	{
+		delete financeManager;
+		financeManager = NULL;
+	}
 
 	void signupUser();
 	void loginUser();
