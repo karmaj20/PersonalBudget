@@ -7,17 +7,18 @@ Income FinanceManager::giveNewIncomeData()
     string date = "", item = "";
     float amount = 0.0;
 
-    income.setIncomeId(incomeId);
-    income.setUserId(userId);
-
     date = presentDate();
-    income.setDate(date);
     cout << "What is the category of income ?: ";
     item = AuxiliaryMethods::loadLine();
     income.setItem(item);
 
     cout << "Write amount of income: ";
     cin >> amount;
+
+    income.setIncomeId(loadNewIncomeId());
+    income.setUserId(userId);
+    income.setDate(date);
+    income.setItem(item);
     income.setAmount(amount);
 
     return income;
@@ -71,9 +72,16 @@ void FinanceManager::addIncome()
 	cout << "Would you like to add income with present day or other date ?" << endl;
     
     Income income = giveNewIncomeData();
-
     incomes.push_back(income);
+    incomesFile.addIncomeToFile(income);
 
     cout << endl << "Income added succesfuly" << endl;
     system("pause");
+}
+
+int FinanceManager::loadNewIncomeId() {
+    if (incomes.empty() == true)
+        return 1;
+    else
+        return incomes.back().getIncomeId() + 1;
 }

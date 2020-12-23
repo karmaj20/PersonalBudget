@@ -9,6 +9,7 @@ using namespace std;
 #include "Income.h"
 #include "Expense.h"
 #include "UserManager.h"
+#include "IncomesFile.h"
 #include "AuxiliaryMethods.h"
 
 class FinanceManager {
@@ -17,9 +18,11 @@ class FinanceManager {
 
 	Income giveNewIncomeData();
 	string presentDate();
-	void addIncomeWithCurrentDate();
 	void displayIncomeData(Income income);
+	int loadNewIncomeId();
+	IncomesFile incomesFile;
 public:
+	FinanceManager(string filenameWithIncomes) : incomesFile(filenameWithIncomes) {};
 	void displayIncomes();
 
 	void addIncome();

@@ -12,8 +12,8 @@ class PersonalBudget {
 	FinanceManager financeManager;
 
 public:
-	PersonalBudget(string filenameWithUsers) :
-		userManager(filenameWithUsers) {};
+	PersonalBudget(string filenameWithUsers, string filenameWithIncomes) :
+		userManager(filenameWithUsers), financeManager(filenameWithIncomes) {};
 
 	void signupUser();
 	void loginUser();
