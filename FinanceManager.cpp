@@ -11,6 +11,7 @@ Income FinanceManager::giveNewIncomeData()
     income.setUserId(userId);
 
     date = presentDate();
+    income.setDate(date);
     cout << "What is the category of income ?: ";
     item = AuxiliaryMethods::loadLine();
     income.setItem(item);
@@ -36,6 +37,33 @@ string FinanceManager::presentDate()
 
     date = year + '-' + month + "-" + day;
     return date;
+}
+
+void FinanceManager::displayIncomes()
+{
+    system("cls");
+    if (!incomes.empty()) {
+        cout << "             >>> INCOMES <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
+            displayIncomeData(*itr);
+        }
+        cout << endl;
+    }
+    else {
+        cout << endl << "You did not add incomes." << endl << endl;
+    }
+    system("pause");
+}
+
+void FinanceManager::displayIncomeData(Income income)
+{
+    cout << "Income Id:     " << income.getIncomeId() << endl;
+    cout << "User Id:       " << income.getUserId() << endl;
+    cout << "Date:          " << income.getDate() << endl;
+    cout << "Category:      " << income.getItem() << endl;
+    cout << "Amount:        " << income.getAmount() << endl;
+        
 }
 
 void FinanceManager::addIncome()

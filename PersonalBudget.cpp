@@ -24,3 +24,8 @@ void PersonalBudget::addIncome()
 {
 	financeManager.addIncome();
 }
+
+void PersonalBudget::displayIncomes()
+{
+	financeManager.displayIncomes();
+}

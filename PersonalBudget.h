@@ -20,6 +20,7 @@ public:
 	void changePasswordLoggedUser();
 	void displayUsers();
 	void addIncome();
+	void displayIncomes();
 	
 };
 

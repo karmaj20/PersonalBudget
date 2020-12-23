@@ -22,7 +22,7 @@ void Income::setItem(string newItem)
 	item = newItem;
 }
 
-void Income::setAmount(int newAmount)
+void Income::setAmount(float newAmount)
 {
 	amount = newAmount;
 }

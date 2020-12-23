@@ -16,4 +16,5 @@ int main()
 	personalBudget.changePasswordLoggedUser();
 	*/
 	personalBudget.addIncome();
+	personalBudget.displayIncomes();
 }

@@ -18,7 +18,10 @@ class FinanceManager {
 	Income giveNewIncomeData();
 	string presentDate();
 	void addIncomeWithCurrentDate();
+	void displayIncomeData(Income income);
 public:
+	void displayIncomes();
+
 	void addIncome();
 	void addExpense();
 	void currentMonthBalance();
