@@ -87,7 +87,7 @@ string FinanceManager::presentDate()
 
 string FinanceManager::choseDate()
 {
-    int year, month, day;
+    //int year, month, day;
     string date;
     cout << "Write date in format rrrr-mm-dd: ";
     cin >> date;
@@ -126,6 +126,23 @@ void FinanceManager::displayIncomes()
     system("pause");
 }
 
+void FinanceManager::displayExpenses()
+{
+    system("cls");
+    if (!expenses.empty()) {
+        cout << "             >>> EXPENSES <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
+            displayExpenseData(*itr);
+        }
+        cout << endl;
+    }
+    else {
+        cout << endl << "You did not add expenses." << endl << endl;
+    }
+    system("pause");
+}
+
 void FinanceManager::displayIncomeData(Income income)
 {
     cout << "Income Id:     " << income.getIncomeId() << endl;
@@ -134,6 +151,22 @@ void FinanceManager::displayIncomeData(Income income)
     cout << "Category:      " << income.getItem() << endl;
     cout << "Amount:        " << income.getAmount() << endl;
         
+}
+
+void FinanceManager::displayExpenseData(Expense expense)
+{
+    cout << "Expense Id:     " << expense.getExpenseId() << endl;
+    cout << "User Id:       " << expense.getUserId() << endl;
+    cout << "Date:          " << expense.getDate() << endl;
+    cout << "Category:      " << expense.getItem() << endl;
+    cout << "Amount:        " << expense.getAmount() << endl;
+}
+
+int FinanceManager::loadNewIncomeId() {
+    if (incomes.empty() == true)
+        return 1;
+    else
+        return incomes.back().getIncomeId() + 1;
 }
 
 void FinanceManager::addIncome()
@@ -162,9 +195,85 @@ void FinanceManager::addIncome()
     system("pause");
 }
 
-int FinanceManager::loadNewIncomeId() {
-    if (incomes.empty() == true)
+/*------------EXPENSES-----------------------*/
+
+Expense FinanceManager::giveNewExpenseData()
+{
+    Expense expense;
+    int expenseId = 0, userId = 0;
+    string date = "", item = "";
+    float amount = 0.0;
+
+    date = presentDate();
+    cout << "What is the category of income ?: ";
+    item = AuxiliaryMethods::loadLine();
+    expense.setItem(item);
+
+    cout << "Write amount of income: ";
+    cin >> amount;
+
+    expense.setExpenseId(loadNewExpenseId());
+    expense.setUserId(ID_LOGGED_USER);
+    expense.setDate(date);
+    expense.setItem(item);
+    expense.setAmount(amount);
+
+    return expense;
+}
+
+Expense FinanceManager::giveNewExpenseChosenDate()
+{
+    Expense expense;
+    int expenseId = 0, userId = 0;
+    string date = "", item = "";
+    float amount = 0.0;
+
+    date = choseDate();
+    cout << "What is the category of income ?: ";
+    item = AuxiliaryMethods::loadLine();
+    expense.setItem(item);
+
+    cout << "Write amount of income: ";
+    cin >> amount;
+
+    expense.setExpenseId(loadNewExpenseId());
+    expense.setUserId(ID_LOGGED_USER);
+    expense.setDate(date);
+    expense.setItem(item);
+    expense.setAmount(amount);
+
+    return expense;
+}
+
+int FinanceManager::loadNewExpenseId() {
+    if (expenses.empty() == true)
         return 1;
     else
-        return incomes.back().getIncomeId() + 1;
+        return expenses.back().getExpenseId() + 1;
+}
+
+void FinanceManager::addExpense()
+{
+    cout << "           >>>INCOME MENU<<<          " << endl;
+    cout << "--------------------------------------" << endl;
+    cout << "1. Add expense with present date" << endl;
+    cout << "2. Add expense with chosen date" << endl;
+    char choice;
+    cin >> choice;
+    if (choice == '1') {
+        Expense expense = giveNewExpenseData();
+        expenses.push_back(expense);
+        expensesFile.addExpenseToFile(expense);
+    }
+    else if (choice == '2') {
+        Expense expense = giveNewExpenseData();
+        expenses.push_back(expense);
+        expensesFile.addExpenseToFile(expense);
+    }
+    else {
+        cout << "Press 1 or 2" << endl;
+    }
+
+    cout << endl << "Expense added succesfuly" << endl;
+    system("pause");
 }
