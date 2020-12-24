@@ -6,7 +6,7 @@ using namespace std;
 
 int main() 
 {
-	PersonalBudget personalBudget("users.xml", "incomes.xml");
+	PersonalBudget personalBudget("users.xml", "incomes.xml", "expenses.xml");
 
 	/*
 	personalBudget.signupUser();
@@ -14,6 +14,6 @@ int main()
 	personalBudget.changePasswordLoggedUser();
 	*/
 	personalBudget.loginUser();
-	personalBudget.addIncome();
-	personalBudget.displayIncomes();
+	personalBudget.addExpense();
+	personalBudget.displayExpenses();
 }

@@ -11,6 +11,7 @@ using namespace std;
 #include "Expense.h"
 #include "UserManager.h"
 #include "IncomesFile.h"
+#include "ExpensesFile.h"
 #include "AuxiliaryMethods.h"
 
 class FinanceManager {
@@ -19,19 +20,26 @@ class FinanceManager {
 	vector<Expense> expenses;
 
 	Income giveNewIncomeData();
+	Expense giveNewExpenseData();
 	Income giveNewIncomeChosenDate();
+	Expense giveNewExpenseChosenDate();
 	string presentDate();
 	string choseDate();
 	void displayIncomeData(Income income);
+	void displayExpenseData(Expense expense);
 	int loadNewIncomeId();
+	int loadNewExpenseId();
 	IncomesFile incomesFile;
+	ExpensesFile expensesFile;
 public:
-	FinanceManager(string filenameWithIncomes, int idLoggedUser) :
-		incomesFile(filenameWithIncomes), ID_LOGGED_USER(idLoggedUser)
+	FinanceManager(string filenameWithIncomes, string filenameWithExpenses, int idLoggedUser) :
+		incomesFile(filenameWithIncomes), expensesFile(filenameWithExpenses), ID_LOGGED_USER(idLoggedUser)
 	{
 		incomes = incomesFile.readIncomesFromFile(ID_LOGGED_USER);
+		expenses = expensesFile.readExpensesFromFile(ID_LOGGED_USER);
 	};
 	void displayIncomes();
+	void displayExpenses();
 
 	void addIncome();
 	void addExpense();

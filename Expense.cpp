@@ -20,7 +20,7 @@ void Expense::setItem(string newItem)
 	item = newItem;
 }
 
-void Expense::setAmount(int newAmount)
+void Expense::setAmount(float newAmount)
 {
 	amount = newAmount;
 }

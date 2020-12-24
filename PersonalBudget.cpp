@@ -11,7 +11,7 @@ void PersonalBudget::loginUser()
 
 	if (userManager.isUserLogged())
 	{
-		financeManager = new FinanceManager(FILENAME_WITH_INCOMES, userManager.loadIdLoggedUser());
+		financeManager = new FinanceManager(FILENAME_WITH_INCOMES, FILENAME_WITH_EXPENSES, userManager.loadIdLoggedUser());
 	}
 }
 
@@ -30,7 +30,17 @@ void PersonalBudget::addIncome()
 	financeManager->addIncome();
 }
 
+void PersonalBudget::addExpense()
+{
+	financeManager->addExpense();
+}
+
 void PersonalBudget::displayIncomes()
 {
 	financeManager->displayIncomes();
+}
+
+void PersonalBudget::displayExpenses()
+{
+	financeManager->displayExpenses();
 }

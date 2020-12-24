@@ -11,9 +11,10 @@ class PersonalBudget {
 	UserManager userManager;
 	FinanceManager* financeManager;
 	const string FILENAME_WITH_INCOMES;
+	const string FILENAME_WITH_EXPENSES;
 public:
-	PersonalBudget(string filenameWithUsers, string filenameWithIncomes) :
-		userManager(filenameWithUsers), FILENAME_WITH_INCOMES(filenameWithIncomes) 
+	PersonalBudget(string filenameWithUsers, string filenameWithIncomes, string filenameWithExpenses) :
+		userManager(filenameWithUsers), FILENAME_WITH_INCOMES(filenameWithIncomes), FILENAME_WITH_EXPENSES(filenameWithExpenses)
 	{
 		financeManager = NULL;
 	};
@@ -28,7 +29,9 @@ public:
 	void changePasswordLoggedUser();
 	void displayUsers();
 	void addIncome();
+	void addExpense();
 	void displayIncomes();
+	void displayExpenses();
 	
 };
 
