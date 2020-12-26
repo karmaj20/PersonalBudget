@@ -4,7 +4,7 @@ void IncomesFile::addIncomeToFile(Income income)
 {
 	CMarkup xml;
 	bool fileExists = xml.Load(FILENAME_WITH_INCOMES);
-	
+	ostringstream temporaryString;
 
 	if (!fileExists) {
 		xml.AddElem("Incomes");
@@ -18,7 +18,10 @@ void IncomesFile::addIncomeToFile(Income income)
 	xml.AddElem("UserId", income.getUserId());
 	xml.AddElem("Date", income.getDate());
 	xml.AddElem("Item", income.getItem());
-	xml.AddElem("Amount", income.getAmount());
+
+	temporaryString << income.getAmount();
+	string amountAsString = temporaryString.str();
+	xml.AddElem("Amount", amountAsString);
 
 	xml.Save(FILENAME_WITH_INCOMES);
 }

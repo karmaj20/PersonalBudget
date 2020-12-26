@@ -9,7 +9,7 @@ class Income {
 	int userId = 0;
 	string date = "";
 	string item = "";
-	float amount = 0;
+	float amount = 0.0;
 
 public:
 	void setIncomeId(int newIncomeId);

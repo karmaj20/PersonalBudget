@@ -155,7 +155,7 @@ void FinanceManager::displayIncomeData(Income income)
 
 void FinanceManager::displayExpenseData(Expense expense)
 {
-    cout << "Expense Id:     " << expense.getExpenseId() << endl;
+    cout << "Expense Id:    " << expense.getExpenseId() << endl;
     cout << "User Id:       " << expense.getUserId() << endl;
     cout << "Date:          " << expense.getDate() << endl;
     cout << "Category:      " << expense.getItem() << endl;
@@ -195,7 +195,6 @@ void FinanceManager::addIncome()
     system("pause");
 }
 
-/*------------EXPENSES-----------------------*/
 
 Expense FinanceManager::giveNewExpenseData()
 {
@@ -254,7 +253,7 @@ int FinanceManager::loadNewExpenseId() {
 
 void FinanceManager::addExpense()
 {
-    cout << "           >>>INCOME MENU<<<          " << endl;
+    cout << "           >>>EXPENSE MENU<<<          " << endl;
     cout << "--------------------------------------" << endl;
     cout << "1. Add expense with present date" << endl;
     cout << "2. Add expense with chosen date" << endl;

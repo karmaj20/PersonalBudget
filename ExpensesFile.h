@@ -2,6 +2,7 @@
 #define EXPENSESFILE_H
 #include <iostream>
 #include <vector>
+#include <sstream>
 
 #include "Expense.h"
 #include "Markup.h"

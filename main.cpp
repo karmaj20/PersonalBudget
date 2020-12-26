@@ -14,7 +14,6 @@ int main()
 	personalBudget.changePasswordLoggedUser();
 	*/
 	personalBudget.loginUser();
-	personalBudget.addIncome();
-	// personalBudget.addExpense();
-	personalBudget.displayExpenses();
+	//personalBudget.addIncome();
+	personalBudget.displayIncomes();
 }
