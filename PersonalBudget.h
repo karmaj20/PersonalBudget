@@ -26,6 +26,7 @@ public:
 
 	void signupUser();
 	void loginUser();
+	void logoutUser();
 	void changePasswordLoggedUser();
 	void displayUsers();
 	void addIncome();

@@ -15,6 +15,13 @@ void PersonalBudget::loginUser()
 	}
 }
 
+void PersonalBudget::logoutUser()
+{
+	userManager.logoutUser();
+	delete financeManager;
+	financeManager = NULL;
+}
+
 void PersonalBudget::changePasswordLoggedUser()
 {
 	userManager.changePasswordLoggedUser();
@@ -27,12 +34,24 @@ void PersonalBudget::displayUsers()
 
 void PersonalBudget::addIncome()
 {
-	financeManager->addIncome();
+	if (userManager.isUserLogged()) {
+		financeManager->addIncome();
+	}
+	else {
+		cout << "Login to add income." << endl;
+		system("pause");
+	}
 }
 
 void PersonalBudget::addExpense()
 {
-	financeManager->addExpense();
+	if (userManager.isUserLogged()) {
+		financeManager->addExpense();
+	}
+	else {
+		cout << "Login to add expense." << endl;
+		system("pause");
+	}
 }
 
 void PersonalBudget::displayIncomes()

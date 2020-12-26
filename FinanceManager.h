@@ -27,8 +27,6 @@ class FinanceManager {
 	string choseDate();
 	void displayIncomeData(Income income);
 	void displayExpenseData(Expense expense);
-	int loadNewIncomeId();
-	int loadNewExpenseId();
 	IncomesFile incomesFile;
 	ExpensesFile expensesFile;
 public:

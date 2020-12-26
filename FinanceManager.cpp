@@ -162,14 +162,6 @@ void FinanceManager::displayExpenseData(Expense expense)
     cout << "Amount:        " << expense.getAmount() << endl;
 }
 
-/*
-int FinanceManager::loadNewIncomeId() {
-    if (incomes.empty() == true)
-        return 1;
-    else
-        return incomes.back().getIncomeId() + 1;
-}
-*/
 
 void FinanceManager::addIncome()
 {
@@ -206,11 +198,11 @@ Expense FinanceManager::giveNewExpenseData()
     float amount = 0.0;
 
     date = presentDate();
-    cout << "What is the category of income ?: ";
+    cout << "What is the category of expense ?: ";
     item = AuxiliaryMethods::loadLine();
     expense.setItem(item);
 
-    cout << "Write amount of income: ";
+    cout << "Write amount of expense: ";
     cin >> amount;
 
     expense.setExpenseId(expensesFile.loadLastExpenseId() + 1);
@@ -230,11 +222,11 @@ Expense FinanceManager::giveNewExpenseChosenDate()
     float amount = 0.0;
 
     date = choseDate();
-    cout << "What is the category of income ?: ";
+    cout << "What is the category of expense ?: ";
     item = AuxiliaryMethods::loadLine();
     expense.setItem(item);
 
-    cout << "Write amount of income: ";
+    cout << "Write amount of expense: ";
     cin >> amount;
 
     expense.setExpenseId(expensesFile.loadLastExpenseId() + 1);
@@ -245,15 +237,6 @@ Expense FinanceManager::giveNewExpenseChosenDate()
 
     return expense;
 }
-
-
-int FinanceManager::loadNewExpenseId() {
-    if (expenses.empty() == true)
-        return 1;
-    else
-        return expenses.back().getExpenseId() + 1;
-}
-
 
 void FinanceManager::addExpense()
 {
@@ -280,3 +263,4 @@ void FinanceManager::addExpense()
     cout << endl << "Expense added succesfuly" << endl;
     system("pause");
 }
+
