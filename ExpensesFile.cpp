@@ -59,8 +59,15 @@ vector<Expense> ExpensesFile::readExpensesFromFile(int idLoggedUser)
 		expense.setAmount(AuxiliaryMethods::stringToFloatConverter(strSN));
 		xml.OutOfElem();
 
-		expenses.push_back(expense);
+		lastExpenseId++;
+		if(idLoggedUser == expense.getUserId())
+			expenses.push_back(expense);
 	}
 
 	return expenses;
+}
+
+int ExpensesFile::loadLastExpenseId()
+{
+	return lastExpenseId;
 }

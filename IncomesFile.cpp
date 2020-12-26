@@ -32,6 +32,7 @@ vector<Income> IncomesFile::readIncomesFromFile(int idLoggedUser)
 	Income income;
 	vector <Income> incomes;
 	xml.Load(FILENAME_WITH_INCOMES);
+	
 
 	xml.FindElem();
 	xml.IntoElem();
@@ -58,8 +59,15 @@ vector<Income> IncomesFile::readIncomesFromFile(int idLoggedUser)
 		income.setAmount(AuxiliaryMethods::stringToFloatConverter(strSN));
 		xml.OutOfElem();
 
-		incomes.push_back(income);
+		lastIncomeId++;
+		if(idLoggedUser == income.getUserId())
+			incomes.push_back(income);
 	}
 
 	return incomes;
+}
+
+int IncomesFile::loadLastIncomeId()
+{
+	return lastIncomeId;
 }
