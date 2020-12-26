@@ -10,13 +10,17 @@ using namespace std;
 
 class IncomesFile {
 	const string FILENAME_WITH_INCOMES;
+	int lastIncomeId;
 
 public: 
 	IncomesFile(string filenameWithIncomes) :
-		FILENAME_WITH_INCOMES(filenameWithIncomes) {};
+		FILENAME_WITH_INCOMES(filenameWithIncomes) {
+		lastIncomeId = 0;
+	};
 	
 	void addIncomeToFile(Income income);
 	vector <Income> readIncomesFromFile(int idLoggedUser);
+	int loadLastIncomeId();
 };
 
 #endif

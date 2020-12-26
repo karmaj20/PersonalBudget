@@ -4,7 +4,7 @@ void ExpensesFile::addExpenseToFile(Expense expense)
 {
 	CMarkup xml;
 	bool fileExists = xml.Load(FILENAME_WITH_EXPENSES);
-
+	ostringstream temporaryString;
 
 	if (!fileExists) {
 		xml.AddElem("Expenses");
@@ -18,7 +18,11 @@ void ExpensesFile::addExpenseToFile(Expense expense)
 	xml.AddElem("UserId", expense.getUserId());
 	xml.AddElem("Date", expense.getDate());
 	xml.AddElem("Item", expense.getItem());
-	xml.AddElem("Amount", expense.getAmount());
+
+	temporaryString << expense.getAmount();
+	string amountAsString = temporaryString.str();
+	xml.AddElem("Amount", amountAsString);
+
 
 	xml.Save(FILENAME_WITH_EXPENSES);
 }
@@ -32,10 +36,10 @@ vector<Expense> ExpensesFile::readExpensesFromFile(int idLoggedUser)
 
 	xml.FindElem();
 	xml.IntoElem();
-	while (xml.FindElem("Income")) {
+	while (xml.FindElem("Expense")) {
 		xml.IntoElem();
 
-		xml.FindElem("IncomeId");
+		xml.FindElem("ExpenseId");
 		MCD_STR strSN = xml.GetData();
 		expense.setExpenseId(AuxiliaryMethods::stringToIntConverter(strSN));
 		xml.FindElem("UserId");
@@ -55,8 +59,15 @@ vector<Expense> ExpensesFile::readExpensesFromFile(int idLoggedUser)
 		expense.setAmount(AuxiliaryMethods::stringToFloatConverter(strSN));
 		xml.OutOfElem();
 
-		expenses.push_back(expense);
+		lastExpenseId++;
+		if(idLoggedUser == expense.getUserId())
+			expenses.push_back(expense);
 	}
 
 	return expenses;
+}
+
+int ExpensesFile::loadLastExpenseId()
+{
+	return lastExpenseId;
 }
