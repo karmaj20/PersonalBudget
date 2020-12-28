@@ -3,7 +3,7 @@
 void UsersFile::addUserToFile(User user)
 {
 	CMarkup xml;
-	bool fileExists = xml.Load(FILENAME_WITH_USERS);
+	bool fileExists = xml.Load(getFilename());
 
 	if (!fileExists) {
 		xml.AddElem("Users");
@@ -19,7 +19,7 @@ void UsersFile::addUserToFile(User user)
 	xml.AddElem("name", user.getName());
 	xml.AddElem("surname", user.getSurname());
 
-	xml.Save(FILENAME_WITH_USERS);
+	xml.Save(getFilename());
 }
 
 vector <User> UsersFile::readUsersFromFile()
@@ -27,7 +27,7 @@ vector <User> UsersFile::readUsersFromFile()
 	CMarkup xml;
 	User user;
 	vector <User> users;
-	xml.Load(FILENAME_WITH_USERS);
+	xml.Load(getFilename());
 
 	xml.FindElem();
 	xml.IntoElem();
@@ -66,7 +66,7 @@ void UsersFile::saveUsersToFile(vector<User>& users)
 	CMarkup xml;
 	User user;
 
-	bool fileExists = xml.Load(FILENAME_WITH_USERS);
+	bool fileExists = xml.Load(getFilename());
 
 	xml.ResetMainPos();
 	while (xml.FindElem())
@@ -86,6 +86,6 @@ void UsersFile::saveUsersToFile(vector<User>& users)
 		xml.AddElem("surname", users[i].getSurname());
 		xml.OutOfElem();
 		xml.AddNode(CMarkup::MNT_COMMENT, "/User");
-		xml.Save(FILENAME_WITH_USERS);
+		xml.Save(getFilename());
 	}
 }

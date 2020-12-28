@@ -264,3 +264,7 @@ void FinanceManager::addExpense()
     system("pause");
 }
 
+void FinanceManager::currentMonthBalance()
+{
+}
+
