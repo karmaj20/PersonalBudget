@@ -6,16 +6,16 @@
 
 #include "Expense.h"
 #include "Markup.h"
+#include "XMLFile.h"
 #include "AuxiliaryMethods.h"
 using namespace std;
 
-class ExpensesFile {
-	const string FILENAME_WITH_EXPENSES;
+class ExpensesFile: XMLFile {
 	int lastExpenseId;
 
 public:
 	ExpensesFile(string fileNameWithExpenses) :
-		FILENAME_WITH_EXPENSES(fileNameWithExpenses) {
+		XMLFile(fileNameWithExpenses) {
 		lastExpenseId = 0;
 	};
 

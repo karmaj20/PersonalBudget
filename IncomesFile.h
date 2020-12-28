@@ -5,16 +5,16 @@
 
 #include "Income.h"
 #include "Markup.h"
+#include "XMLFile.h"
 #include "AuxiliaryMethods.h"
 using namespace std;
 
-class IncomesFile {
-	const string FILENAME_WITH_INCOMES;
+class IncomesFile: XMLFile {
 	int lastIncomeId;
 
 public: 
 	IncomesFile(string filenameWithIncomes) :
-		FILENAME_WITH_INCOMES(filenameWithIncomes) {
+		XMLFile(filenameWithIncomes) {
 		lastIncomeId = 0;
 	};
 	

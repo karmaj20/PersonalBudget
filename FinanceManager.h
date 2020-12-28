@@ -44,7 +44,6 @@ public:
 	void currentMonthBalance();
 	void previousMonthBalance();
 	void chosenPeriodBalance();
-	void changePassword();
 };
 
 #endif

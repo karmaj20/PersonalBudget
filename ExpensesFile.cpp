@@ -3,7 +3,7 @@
 void ExpensesFile::addExpenseToFile(Expense expense)
 {
 	CMarkup xml;
-	bool fileExists = xml.Load(FILENAME_WITH_EXPENSES);
+	bool fileExists = xml.Load(getFilename());
 	ostringstream temporaryString;
 
 	if (!fileExists) {
@@ -24,7 +24,7 @@ void ExpensesFile::addExpenseToFile(Expense expense)
 	xml.AddElem("Amount", amountAsString);
 
 
-	xml.Save(FILENAME_WITH_EXPENSES);
+	xml.Save(getFilename());
 }
 
 vector<Expense> ExpensesFile::readExpensesFromFile(int idLoggedUser)
@@ -32,7 +32,7 @@ vector<Expense> ExpensesFile::readExpensesFromFile(int idLoggedUser)
 	CMarkup xml;
 	Expense expense;
 	vector <Expense> expenses;
-	xml.Load(FILENAME_WITH_EXPENSES);
+	xml.Load(getFilename());
 
 	xml.FindElem();
 	xml.IntoElem();

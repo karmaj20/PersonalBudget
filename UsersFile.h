@@ -5,16 +5,16 @@
 
 #include "User.h"
 #include "Markup.h"
+#include "XMLFile.h"
 #include "AuxiliaryMethods.h"
 
 using namespace std;
 
-class UsersFile {
-	const string FILENAME_WITH_USERS;
+class UsersFile: public XMLFile {
 
 public:
 	UsersFile(string filenameWithUsers) :
-		FILENAME_WITH_USERS(filenameWithUsers) {};
+		XMLFile(filenameWithUsers) {};
 
 	void addUserToFile(User user);
 	vector <User> readUsersFromFile();
