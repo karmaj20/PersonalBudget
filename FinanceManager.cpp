@@ -252,7 +252,7 @@ void FinanceManager::addExpense()
         expensesFile.addExpenseToFile(expense);
     }
     else if (choice == '2') {
-        Expense expense = giveNewExpenseData();
+        Expense expense = giveNewExpenseChosenDate();
         expenses.push_back(expense);
         expensesFile.addExpenseToFile(expense);
     }
