@@ -7,20 +7,20 @@ using namespace std;
 class Expense {
 	int expenseId = 0;
 	int userId = 0;
-	string date = "";
+	int date = 0;
 	string item = "";
 	float amount = 0.0;
 
 public:
 	void setExpenseId(int newExpenseId);
 	void setUserId(int newUserId);
-	void setDate(string newDate);
+	void setDate(int newDate);
 	void setItem(string newItem);
 	void setAmount(float newAmount);
 
 	int getExpenseId();
 	int getUserId();
-	string getDate();
+	int getDate();
 	string getItem();
 	float getAmount();
 };

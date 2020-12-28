@@ -4,7 +4,14 @@ void ExpensesFile::addExpenseToFile(Expense expense)
 {
 	CMarkup xml;
 	bool fileExists = xml.Load(getFilename());
+
+	string newDate;
+	int date = expense.getDate();
+	newDate = AuxiliaryMethods::dateConverter(date);
+
 	ostringstream temporaryString;
+	temporaryString << expense.getAmount();
+	string amountAsString = temporaryString.str();
 
 	if (!fileExists) {
 		xml.AddElem("Expenses");
@@ -16,11 +23,8 @@ void ExpensesFile::addExpenseToFile(Expense expense)
 	xml.IntoElem();
 	xml.AddElem("ExpenseId", expense.getExpenseId());
 	xml.AddElem("UserId", expense.getUserId());
-	xml.AddElem("Date", expense.getDate());
+	xml.AddElem("Date", newDate);
 	xml.AddElem("Item", expense.getItem());
-
-	temporaryString << expense.getAmount();
-	string amountAsString = temporaryString.str();
 	xml.AddElem("Amount", amountAsString);
 
 
@@ -48,7 +52,7 @@ vector<Expense> ExpensesFile::readExpensesFromFile(int idLoggedUser)
 
 		xml.FindElem("Date");
 		strSN = xml.GetData();
-		expense.setDate(strSN);
+		expense.setDate(AuxiliaryMethods::stringToIntConverter(strSN));
 
 		xml.FindElem("Item");
 		strSN = xml.GetData();

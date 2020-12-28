@@ -3,8 +3,8 @@
 Income FinanceManager::giveNewIncomeData()
 {
     Income income;
-    int incomeId = 0, userId = 0;
-    string date = "", item = "";
+    int incomeId = 0, userId = 0, date = 0;
+    string item = "";
     float amount = 0.0;
 
     date = presentDate();
@@ -27,8 +27,8 @@ Income FinanceManager::giveNewIncomeData()
 Income FinanceManager::giveNewIncomeChosenDate()
 {
     Income income;
-    int incomeId = 0, userId = 0;
-    string date = "", item = "";
+    int incomeId = 0, userId = 0, date = 0;
+    string item = "";
     float amount = 0.0;
 
     date = choseDate();
@@ -48,7 +48,7 @@ Income FinanceManager::giveNewIncomeChosenDate()
     return income;
 }
 
-string FinanceManager::presentDate()
+int FinanceManager::presentDate()
 {
     string year, month, day;
     time_t t;
@@ -81,11 +81,12 @@ string FinanceManager::presentDate()
         month = iter->second;
     }
 
-    date = year + '-' + month + "-" + day;
-    return date;
+    date = year + month + day;
+
+    return AuxiliaryMethods::stringToIntConverter(date);
 }
 
-string FinanceManager::choseDate()
+int FinanceManager::choseDate()
 {
     //int year, month, day;
     string date;
@@ -104,9 +105,9 @@ string FinanceManager::choseDate()
     day = AuxiliaryMethods::stringToIntConverter(el[2]);
     */
 
-    date = el[0] + "-" + el[1] + "-" + el[2];
+    date = el[0] + el[1] + el[2];
 
-    return date;
+    return AuxiliaryMethods::stringToIntConverter(date);
 }
 
 void FinanceManager::displayIncomes()
@@ -193,8 +194,8 @@ void FinanceManager::addIncome()
 Expense FinanceManager::giveNewExpenseData()
 {
     Expense expense;
-    int expenseId = 0, userId = 0;
-    string date = "", item = "";
+    int expenseId = 0, userId = 0, date = 0;
+    string item = "";
     float amount = 0.0;
 
     date = presentDate();
@@ -217,8 +218,8 @@ Expense FinanceManager::giveNewExpenseData()
 Expense FinanceManager::giveNewExpenseChosenDate()
 {
     Expense expense;
-    int expenseId = 0, userId = 0;
-    string date = "", item = "";
+    int expenseId = 0, userId = 0, date = 0;
+    string item = "";
     float amount = 0.0;
 
     date = choseDate();
@@ -262,9 +263,5 @@ void FinanceManager::addExpense()
 
     cout << endl << "Expense added succesfuly" << endl;
     system("pause");
-}
-
-void FinanceManager::currentMonthBalance()
-{
 }
 

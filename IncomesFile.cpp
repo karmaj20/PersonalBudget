@@ -4,7 +4,14 @@ void IncomesFile::addIncomeToFile(Income income)
 {
 	CMarkup xml;
 	bool fileExists = xml.Load(getFilename());
+
+	string newDate;
+	int date = income.getDate();
+	newDate = AuxiliaryMethods::dateConverter(date);
+
 	ostringstream temporaryString;
+	temporaryString << income.getAmount();
+	string amountAsString = temporaryString.str();
 
 	if (!fileExists) {
 		xml.AddElem("Incomes");
@@ -16,11 +23,8 @@ void IncomesFile::addIncomeToFile(Income income)
 	xml.IntoElem();
 	xml.AddElem("IncomeId", income.getIncomeId());
 	xml.AddElem("UserId", income.getUserId());
-	xml.AddElem("Date", income.getDate());
+	xml.AddElem("Date", newDate);
 	xml.AddElem("Item", income.getItem());
-
-	temporaryString << income.getAmount();
-	string amountAsString = temporaryString.str();
 	xml.AddElem("Amount", amountAsString);
 
 	xml.Save(getFilename());
@@ -48,7 +52,7 @@ vector<Income> IncomesFile::readIncomesFromFile(int idLoggedUser)
 
 		xml.FindElem("Date");
 		strSN = xml.GetData();
-		income.setDate(strSN);
+		income.setDate(AuxiliaryMethods::stringToIntConverter(strSN));
 
 		xml.FindElem("Item");
 		strSN = xml.GetData();
