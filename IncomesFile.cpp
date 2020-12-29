@@ -52,6 +52,8 @@ vector<Income> IncomesFile::readIncomesFromFile(int idLoggedUser)
 
 		xml.FindElem("Date");
 		strSN = xml.GetData();
+		strSN.erase(4, 1);
+		strSN.erase(6, 1);
 		income.setDate(AuxiliaryMethods::stringToIntConverter(strSN));
 
 		xml.FindElem("Item");

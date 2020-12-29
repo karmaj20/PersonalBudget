@@ -146,9 +146,13 @@ void FinanceManager::displayExpenses()
 
 void FinanceManager::displayIncomeData(Income income)
 {
+    string newDate;
+    int date = income.getDate();
+    newDate = AuxiliaryMethods::dateConverter(date);
+
     cout << "Income Id:     " << income.getIncomeId() << endl;
     cout << "User Id:       " << income.getUserId() << endl;
-    cout << "Date:          " << income.getDate() << endl;
+    cout << "Date:          " << newDate << endl;
     cout << "Category:      " << income.getItem() << endl;
     cout << "Amount:        " << income.getAmount() << endl;
         
@@ -156,9 +160,13 @@ void FinanceManager::displayIncomeData(Income income)
 
 void FinanceManager::displayExpenseData(Expense expense)
 {
+    string newDate;
+    int date = expense.getDate();
+    newDate = AuxiliaryMethods::dateConverter(date);
+
     cout << "Expense Id:    " << expense.getExpenseId() << endl;
     cout << "User Id:       " << expense.getUserId() << endl;
-    cout << "Date:          " << expense.getDate() << endl;
+    cout << "Date:          " << newDate << endl;
     cout << "Category:      " << expense.getItem() << endl;
     cout << "Amount:        " << expense.getAmount() << endl;
 }
