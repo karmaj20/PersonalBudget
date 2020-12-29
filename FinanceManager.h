@@ -23,8 +23,8 @@ class FinanceManager {
 	Expense giveNewExpenseData();
 	Income giveNewIncomeChosenDate();
 	Expense giveNewExpenseChosenDate();
-	string presentDate();
-	string choseDate();
+	int presentDate();
+	int choseDate();
 	void displayIncomeData(Income income);
 	void displayExpenseData(Expense expense);
 	IncomesFile incomesFile;

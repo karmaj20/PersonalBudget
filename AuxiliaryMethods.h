@@ -8,6 +8,7 @@ using namespace std;
 class AuxiliaryMethods {
 public:
 	static string intToStringConverter(int number);
+	static string dateConverter(int number);
 	static int stringToIntConverter(string number);
 	static float stringToFloatConverter(string number);
 	static string loadLine();
