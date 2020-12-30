@@ -31,6 +31,7 @@ class FinanceManager {
 	void displayIncomesAndExpenses(int firstDate, int secondDate);
 	bool checkDateCorectness(int date);
 	bool leapyear(int year);
+	string changeCommaToDot(string amount);
 public:
 	FinanceManager(string filenameWithIncomes, string filenameWithExpenses, int idLoggedUser) :
 		incomesFile(filenameWithIncomes), expensesFile(filenameWithExpenses), ID_LOGGED_USER(idLoggedUser)

@@ -148,6 +148,7 @@ Income FinanceManager::giveNewIncomeData()
     Income income;
     int incomeId = 0, userId = 0, date = 0;
     string item = "";
+    string auxAmount = "";
     float amount = 0.0;
     
     cout << "           >>>INCOME MENU<<<          " << endl;
@@ -166,7 +167,9 @@ Income FinanceManager::giveNewIncomeData()
     income.setItem(item);
 
     cout << "Write amount of income: ";
-    cin >> amount;
+    cin >> auxAmount;
+    auxAmount = changeCommaToDot(auxAmount);
+    amount = AuxiliaryMethods::stringToFloatConverter(auxAmount);
 
     income.setIncomeId(incomesFile.loadLastIncomeId() + 1);
     income.setUserId(ID_LOGGED_USER);
@@ -182,6 +185,7 @@ Expense FinanceManager::giveNewExpenseData()
     Expense expense;
     int expenseId = 0, userId = 0, date = 0;
     string item = "";
+    string auxAmount = "";
     float amount = 0.0;
 
     cout << "           >>>EXPENSE MENU<<<          " << endl;
@@ -200,7 +204,9 @@ Expense FinanceManager::giveNewExpenseData()
     expense.setItem(item);
 
     cout << "Write amount of expense: ";
-    cin >> amount;
+    cin >> auxAmount;
+    auxAmount = changeCommaToDot(auxAmount);
+    amount = AuxiliaryMethods::stringToFloatConverter(auxAmount);
 
     expense.setExpenseId(expensesFile.loadLastExpenseId() + 1);
     expense.setUserId(ID_LOGGED_USER);
@@ -251,7 +257,6 @@ int FinanceManager::presentDate()
 
 int FinanceManager::choseDate()
 {
-    //int year, month, day;
     int newDate;
     string date;
     do {
@@ -362,4 +367,20 @@ bool FinanceManager::leapyear(int year) {
     else {
         return false;
     }
+}
+
+string FinanceManager::changeCommaToDot(string amount)
+{
+    string amountWithDot = "";
+
+    for (int characterPosition = 0; characterPosition < amount.size(); characterPosition++)
+    {
+        if (amount[characterPosition] == ',')
+        {
+            amountWithDot += ".";
+            continue;
+        }
+        amountWithDot += amount[characterPosition];
+    }
+    return amountWithDot;
 }
