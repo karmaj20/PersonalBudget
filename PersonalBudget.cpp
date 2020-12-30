@@ -53,17 +53,6 @@ void PersonalBudget::addExpense()
 		system("pause");
 	}
 }
-
-void PersonalBudget::displayIncomes()
-{
-	financeManager->displayIncomes();
-}
-
-void PersonalBudget::displayExpenses()
-{
-	financeManager->displayExpenses();
-}
-
 void PersonalBudget::displayIncomesAndExpenses()
 {
 	financeManager->displayIncomesAndExpenses();

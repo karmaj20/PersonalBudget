@@ -32,8 +32,6 @@ public:
 	void displayUsers();
 	void addIncome();
 	void addExpense();
-	void displayIncomes();
-	void displayExpenses();
 	void displayIncomesAndExpenses();
 	
 };
