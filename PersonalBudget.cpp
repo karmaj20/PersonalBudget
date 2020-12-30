@@ -37,11 +37,6 @@ void PersonalBudget::changePasswordLoggedUser()
 	userManager.changePasswordLoggedUser();
 }
 
-void PersonalBudget::displayUsers()
-{
-	userManager.displayUsers();
-}
-
 bool PersonalBudget::isUserLogged()
 {
 	return userManager.isUserLogged();

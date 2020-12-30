@@ -29,6 +29,8 @@ class FinanceManager {
 	IncomesFile incomesFile;
 	ExpensesFile expensesFile;
 	void displayIncomesAndExpenses(int firstDate, int secondDate);
+	bool checkDateCorectness(int date);
+	bool leapyear(int year);
 public:
 	FinanceManager(string filenameWithIncomes, string filenameWithExpenses, int idLoggedUser) :
 		incomesFile(filenameWithIncomes), expensesFile(filenameWithExpenses), ID_LOGGED_USER(idLoggedUser)

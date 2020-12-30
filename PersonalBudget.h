@@ -30,16 +30,14 @@ public:
 
 	void signupUser();
 	void loginUser();
-	void logoutUser();
-	void changePasswordLoggedUser();
-	void displayUsers();
+
 	void addIncome();
 	void addExpense();
-	//void displayIncomesAndExpenses();
 	void currentMonthBalance();
 	void previousMonthBalance();
 	void chosenPeriodBalance();
-	
+	void changePasswordLoggedUser();
+	void logoutUser();
 };
 
 #endif
