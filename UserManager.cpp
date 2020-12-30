@@ -139,3 +139,42 @@ void UserManager::displayUsers()
 		cout << users[i].getSurname() << endl;
 	}
 }
+
+char UserManager::chooseMainMenuOption()
+{
+	char choice;
+
+	system("cls");
+	cout << "    >>> MAIN  MENU <<<" << endl;
+	cout << "---------------------------" << endl;
+	cout << "1. Registration" << endl;
+	cout << "2. Sign in" << endl;
+	cout << "9. End of program" << endl;
+	cout << "---------------------------" << endl;
+	cout << "Your choice: ";
+	choice = AuxiliaryMethods::loadChar();
+
+	return choice;
+}
+
+char UserManager::chooseUserMenuOption()
+{
+	char choice;
+
+	system("cls");
+	cout << "		>>> USER MENU <<<	" << endl;
+	cout << "---------------------------" << endl;
+	cout << "1. Add income" << endl;
+	cout << "2. Add expense" << endl;
+	cout << "3. Display current month balance" << endl;
+	cout << "4. Display previous month balance" << endl;
+	cout << "5. Display balance from chosen period" << endl;
+	cout << "---------------------------" << endl;
+	cout << "6. Change your password" << endl;
+	cout << "7. Logout" << endl;
+	cout << "---------------------------" << endl;
+	cout << "Your choice: ";
+	choice = AuxiliaryMethods::loadChar();
+
+	return choice;
+}

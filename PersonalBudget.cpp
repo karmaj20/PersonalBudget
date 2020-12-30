@@ -1,5 +1,15 @@
 ﻿#include "PersonalBudget.h"
 
+char PersonalBudget::chooseMainMenuOption()
+{
+	return userManager.chooseMainMenuOption();
+}
+
+char PersonalBudget::chooseUserMenuOption()
+{
+	return userManager.chooseUserMenuOption();
+}
+
 void PersonalBudget::signupUser()
 {
 	userManager.signupUser();
@@ -32,9 +42,14 @@ void PersonalBudget::displayUsers()
 	userManager.displayUsers();
 }
 
+bool PersonalBudget::isUserLogged()
+{
+	return userManager.isUserLogged();
+}
+
 void PersonalBudget::addIncome()
 {
-	if (userManager.isUserLogged()) {
+	if (isUserLogged()) {
 		financeManager->addIncome();
 	}
 	else {
@@ -45,7 +60,7 @@ void PersonalBudget::addIncome()
 
 void PersonalBudget::addExpense()
 {
-	if (userManager.isUserLogged()) {
+	if (isUserLogged()) {
 		financeManager->addExpense();
 	}
 	else {
@@ -54,17 +69,17 @@ void PersonalBudget::addExpense()
 	}
 }
 
-void PersonalBudget::displayIncomes()
+void PersonalBudget::currentMonthBalance()
 {
-	financeManager->displayIncomes();
+	financeManager->currentMonthBalance();
 }
 
-void PersonalBudget::displayExpenses()
+void PersonalBudget::previousMonthBalance()
 {
-	financeManager->displayExpenses();
+	financeManager->previousMonthBalance();
 }
 
-void PersonalBudget::displayIncomesAndExpenses()
+void PersonalBudget::chosenPeriodBalance()
 {
-	financeManager->displayIncomesAndExpenses();
+	financeManager->chosenPeriodBalance();
 }

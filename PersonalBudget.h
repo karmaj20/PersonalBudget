@@ -4,7 +4,6 @@
 
 #include "UserManager.h"
 #include "FinanceManager.h"
-#include "XMLFile.h"
 
 using namespace std;
 
@@ -25,6 +24,10 @@ public:
 		financeManager = NULL;
 	}
 
+	char chooseMainMenuOption();
+	char chooseUserMenuOption();
+	bool isUserLogged();
+
 	void signupUser();
 	void loginUser();
 	void logoutUser();
@@ -32,9 +35,10 @@ public:
 	void displayUsers();
 	void addIncome();
 	void addExpense();
-	void displayIncomes();
-	void displayExpenses();
-	void displayIncomesAndExpenses();
+	//void displayIncomesAndExpenses();
+	void currentMonthBalance();
+	void previousMonthBalance();
+	void chosenPeriodBalance();
 	
 };
 
