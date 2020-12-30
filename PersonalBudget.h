@@ -4,7 +4,6 @@
 
 #include "UserManager.h"
 #include "FinanceManager.h"
-#include "XMLFile.h"
 
 using namespace std;
 
@@ -24,6 +23,10 @@ public:
 		delete financeManager;
 		financeManager = NULL;
 	}
+
+	char chooseMainMenuOption();
+	char chooseUserMenuOption();
+	bool isUserLogged();
 
 	void signupUser();
 	void loginUser();

@@ -1,5 +1,15 @@
 ﻿#include "PersonalBudget.h"
 
+char PersonalBudget::chooseMainMenuOption()
+{
+	return userManager.chooseMainMenuOption();
+}
+
+char PersonalBudget::chooseUserMenuOption()
+{
+	return userManager.chooseUserMenuOption();
+}
+
 void PersonalBudget::signupUser()
 {
 	userManager.signupUser();
@@ -32,9 +42,14 @@ void PersonalBudget::displayUsers()
 	userManager.displayUsers();
 }
 
+bool PersonalBudget::isUserLogged()
+{
+	return userManager.isUserLogged();
+}
+
 void PersonalBudget::addIncome()
 {
-	if (userManager.isUserLogged()) {
+	if (isUserLogged()) {
 		financeManager->addIncome();
 	}
 	else {
@@ -45,7 +60,7 @@ void PersonalBudget::addIncome()
 
 void PersonalBudget::addExpense()
 {
-	if (userManager.isUserLogged()) {
+	if (isUserLogged()) {
 		financeManager->addExpense();
 	}
 	else {

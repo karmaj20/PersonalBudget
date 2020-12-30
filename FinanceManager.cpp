@@ -73,6 +73,7 @@ void FinanceManager::currentMonthBalance()
     cout << "Your total incomes this period: " << incomesSum << endl;
     cout << "Your total expenses this period: " << expensesSum << endl;
     cout << "Total balance: " << balance << endl;
+    system("pause");
 }
 
 void FinanceManager::previousMonthBalance()
@@ -153,6 +154,7 @@ void FinanceManager::previousMonthBalance()
     cout << "Your total incomes this period: " << incomesSum << endl;
     cout << "Your total expenses this period: " << expensesSum << endl;
     cout << "Total balance: " << balance << endl;
+    system("pause");
 }
 
 void FinanceManager::chosenPeriodBalance()
@@ -198,6 +200,7 @@ void FinanceManager::chosenPeriodBalance()
     cout << "Your total incomes this period: "  << incomesSum << endl;
     cout << "Your total expenses this period: " << expensesSum << endl;
     cout << "Total balance: "                   << balance << endl;
+    system("pause");
 }
 
 float FinanceManager::displayIncomes()

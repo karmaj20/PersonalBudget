@@ -30,6 +30,9 @@ public:
 	void saveUsersToFile();
 	void displayUsers();
 	int loadIdLoggedUser();
+
+	char chooseMainMenuOption();
+	char chooseUserMenuOption();
 };
 
 #endif
