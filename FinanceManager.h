@@ -38,8 +38,8 @@ public:
 		expenses = expensesFile.readExpensesFromFile(ID_LOGGED_USER);
 	};
 
-	void displayIncomes();
-	void displayExpenses();
+	float displayIncomes();
+	float displayExpenses();
 	void displayIncomesAndExpenses();
 
 	void addIncome();
