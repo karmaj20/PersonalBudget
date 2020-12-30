@@ -22,8 +22,6 @@ class FinanceManager {
 
 	Income giveNewIncomeData();
 	Expense giveNewExpenseData();
-	Income giveNewIncomeChosenDate();
-	Expense giveNewExpenseChosenDate();
 	int presentDate();
 	int choseDate();
 	void displayIncomeData(Income income);

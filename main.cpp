@@ -15,5 +15,5 @@ int main()
 	personalBudget.loginUser();
 	*/
 	personalBudget.loginUser();
-	personalBudget.displayIncomesAndExpenses();
+	personalBudget.chosenPeriodBalance();
 }

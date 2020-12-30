@@ -21,6 +21,57 @@ void FinanceManager::addExpense()
     system("pause");
 }
 
+void FinanceManager::currentMonthBalance()
+{
+    int date = presentDate();
+    cout << date;
+}
+
+void FinanceManager::chosenPeriodBalance()
+{
+    int firstDate, secondDate;
+    float incomesSum = 0.0, expensesSum = 0.0;
+    firstDate = choseDate();
+    secondDate = choseDate();
+    cout << endl;
+
+    incomes = AuxiliaryMethods::sortingIncomesByDate(incomes);
+    expenses = AuxiliaryMethods::sortingExpensesByDate(expenses);
+    if (!incomes.empty()) {
+        cout << "             >>> INCOMES <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
+            if (itr->getDate() > firstDate && itr->getDate() < secondDate) {
+                incomesSum += itr->getAmount();
+                displayIncomeData(*itr);
+            }
+        }
+        cout << endl;
+    }
+    else {
+        cout << endl << "You did not add incomes." << endl << endl;
+    }
+    if (!expenses.empty()) {
+        cout << "             >>> EXPENSES <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
+            if (itr->getDate() > firstDate && itr->getDate() < secondDate) {
+                expensesSum += itr->getAmount();
+                displayExpenseData(*itr);
+            }
+        }
+        cout << endl;
+    }
+    else {
+        cout << endl << "You did not add epenses." << endl << endl;
+    }
+
+    float balance = incomesSum - expensesSum;
+    cout << "Your total incomes this period: "  << incomesSum << endl;
+    cout << "Your total expenses this period: " << expensesSum << endl;
+    cout << "Total balance: "                   << balance << endl;
+}
+
 float FinanceManager::displayIncomes()
 {
     incomes = AuxiliaryMethods::sortingIncomesByDate(incomes);
@@ -172,11 +223,11 @@ int FinanceManager::choseDate()
     string date;
     cout << "Write date in format rrrr-mm-dd: ";
     cin >> date;
-    vector <string> el;
+    vector <string> partOfDateContainer;
     stringstream ss(date);
     string item;
     while (getline(ss, item, '-')) {
-        el.push_back(item);
+        partOfDateContainer.push_back(item);
     }
 
     /*
@@ -185,7 +236,7 @@ int FinanceManager::choseDate()
     day = AuxiliaryMethods::stringToIntConverter(el[2]);
     */
 
-    date = el[0] + el[1] + el[2];
+    date = partOfDateContainer[0] + partOfDateContainer[1] + partOfDateContainer[2];
 
     return AuxiliaryMethods::stringToIntConverter(date);
 }
