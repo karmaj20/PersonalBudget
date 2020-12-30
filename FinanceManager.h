@@ -30,6 +30,7 @@ class FinanceManager {
 	ExpensesFile expensesFile;
 	float displayIncomes();
 	float displayExpenses();
+	void helper(int firstDate, int secondDate);
 public:
 	FinanceManager(string filenameWithIncomes, string filenameWithExpenses, int idLoggedUser) :
 		incomesFile(filenameWithIncomes), expensesFile(filenameWithExpenses), ID_LOGGED_USER(idLoggedUser)

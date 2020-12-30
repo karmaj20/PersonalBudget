@@ -40,6 +40,8 @@ void FinanceManager::currentMonthBalance()
 
     incomes = AuxiliaryMethods::sortingIncomesByDate(incomes);
     expenses = AuxiliaryMethods::sortingExpensesByDate(expenses);
+    helper(firstDateHelper, secondDateHelper);
+    /*
     if (!incomes.empty()) {
         cout << "             >>> INCOMES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
@@ -74,6 +76,7 @@ void FinanceManager::currentMonthBalance()
     cout << "Your total expenses this period: " << expensesSum << endl;
     cout << "Total balance: " << balance << endl;
     system("pause");
+    */
 }
 
 void FinanceManager::previousMonthBalance()
@@ -121,6 +124,8 @@ void FinanceManager::previousMonthBalance()
 
     incomes = AuxiliaryMethods::sortingIncomesByDate(incomes);
     expenses = AuxiliaryMethods::sortingExpensesByDate(expenses);
+    helper(firstDateHelper, secondDateHelper);
+    /*+
     if (!incomes.empty()) {
         cout << "             >>> INCOMES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
@@ -155,6 +160,7 @@ void FinanceManager::previousMonthBalance()
     cout << "Your total expenses this period: " << expensesSum << endl;
     cout << "Total balance: " << balance << endl;
     system("pause");
+    */
 }
 
 void FinanceManager::chosenPeriodBalance()
@@ -167,6 +173,9 @@ void FinanceManager::chosenPeriodBalance()
 
     incomes = AuxiliaryMethods::sortingIncomesByDate(incomes);
     expenses = AuxiliaryMethods::sortingExpensesByDate(expenses);
+
+    helper(firstDate, secondDate);
+    /*
     if (!incomes.empty()) {
         cout << "             >>> INCOMES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
@@ -201,45 +210,46 @@ void FinanceManager::chosenPeriodBalance()
     cout << "Your total expenses this period: " << expensesSum << endl;
     cout << "Total balance: "                   << balance << endl;
     system("pause");
+    */
 }
 
-float FinanceManager::displayIncomes()
+void FinanceManager::helper(int firstDate, int secondDate)
 {
-    incomes = AuxiliaryMethods::sortingIncomesByDate(incomes);
-    float sum = 0.0;
-    system("cls");
+    float incomesSum = 0.0, expensesSum = 0.0;
     if (!incomes.empty()) {
         cout << "             >>> INCOMES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
-            sum += itr->getAmount();
-            displayIncomeData(*itr);
+            if (itr->getDate() > firstDate && itr->getDate() < secondDate) {
+                incomesSum += itr->getAmount();
+                displayIncomeData(*itr);
+            }
         }
         cout << endl;
     }
     else {
         cout << endl << "You did not add incomes." << endl << endl;
     }
-    return sum;
-}
-
-float FinanceManager::displayExpenses()
-{
-    expenses = AuxiliaryMethods::sortingExpensesByDate(expenses);
-    float sum = 0.0;
     if (!expenses.empty()) {
         cout << "             >>> EXPENSES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
-            sum += itr->getAmount();
-            displayExpenseData(*itr);
+            if (itr->getDate() > firstDate && itr->getDate() < secondDate) {
+                expensesSum += itr->getAmount();
+                displayExpenseData(*itr);
+            }
         }
-        cout << endl << endl;
+        cout << endl;
     }
     else {
-        cout << endl << "You did not add expenses." << endl << endl;
+        cout << endl << "You did not add epenses." << endl << endl;
     }
-    return sum;
+
+    float balance = incomesSum - expensesSum;
+    cout << "Your total incomes this period: " << incomesSum << endl;
+    cout << "Your total expenses this period: " << expensesSum << endl;
+    cout << "Total balance: " << balance << endl;
+    system("pause");
 }
 
 Income FinanceManager::giveNewIncomeData()
@@ -370,20 +380,6 @@ int FinanceManager::choseDate()
     date = partOfDateContainer[0] + partOfDateContainer[1] + partOfDateContainer[2];
 
     return AuxiliaryMethods::stringToIntConverter(date);
-}
-
-void FinanceManager::displayIncomesAndExpenses()
-{
-    float sumIncomes = 0.0, sumExpenses = 0.0, balance = 0.0;
-
-    sumIncomes = displayIncomes();
-    sumExpenses = displayExpenses();
-
-    balance = sumIncomes - sumExpenses;
-
-    cout << "Your total incomes this period: "              << sumIncomes << endl;
-    cout << "Your total expenses this period: "             << sumExpenses << endl;
-    cout << "Difference between incomes and expenses: "     << balance << endl;
 }
 
 void FinanceManager::displayIncomeData(Income income)

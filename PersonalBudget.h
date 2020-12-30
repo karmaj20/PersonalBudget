@@ -35,7 +35,7 @@ public:
 	void displayUsers();
 	void addIncome();
 	void addExpense();
-	void displayIncomesAndExpenses();
+	//void displayIncomesAndExpenses();
 	void currentMonthBalance();
 	void previousMonthBalance();
 	void chosenPeriodBalance();

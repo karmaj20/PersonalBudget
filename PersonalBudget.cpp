@@ -68,10 +68,6 @@ void PersonalBudget::addExpense()
 		system("pause");
 	}
 }
-void PersonalBudget::displayIncomesAndExpenses()
-{
-	financeManager->displayIncomesAndExpenses();
-}
 
 void PersonalBudget::currentMonthBalance()
 {
