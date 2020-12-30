@@ -58,6 +58,16 @@ void PersonalBudget::displayIncomesAndExpenses()
 	financeManager->displayIncomesAndExpenses();
 }
 
+void PersonalBudget::currentMonthBalance()
+{
+	financeManager->currentMonthBalance();
+}
+
+void PersonalBudget::previousMonthBalance()
+{
+	financeManager->previousMonthBalance();
+}
+
 void PersonalBudget::chosenPeriodBalance()
 {
 	financeManager->chosenPeriodBalance();
