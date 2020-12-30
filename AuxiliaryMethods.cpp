@@ -70,6 +70,20 @@ int AuxiliaryMethods::loadInteger()
 	return number;
 }
 
+vector<Income> AuxiliaryMethods::sortingIncomesByDate(vector<Income>& incomes)
+{
+	sort(incomes.begin(), incomes.end(), compIncome());
+
+	return incomes;
+}
+
+vector<Expense> AuxiliaryMethods::sortingExpensesByDate(vector<Expense>& expenses)
+{
+	sort(expenses.begin(), expenses.end(), compExpense());
+
+	return expenses;
+}
+
 string AuxiliaryMethods::dateConverter(int number)
 {
 	string sign = "-";

@@ -4,6 +4,7 @@
 
 #include "UserManager.h"
 #include "FinanceManager.h"
+#include "XMLFile.h"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ public:
 	void addExpense();
 	void displayIncomes();
 	void displayExpenses();
+	void displayIncomesAndExpenses();
 	
 };
 

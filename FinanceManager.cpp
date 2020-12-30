@@ -112,6 +112,7 @@ int FinanceManager::choseDate()
 
 void FinanceManager::displayIncomes()
 {
+    incomes = AuxiliaryMethods::sortingIncomesByDate(incomes);
     system("cls");
     if (!incomes.empty()) {
         cout << "             >>> INCOMES <<<" << endl;
@@ -129,6 +130,7 @@ void FinanceManager::displayIncomes()
 
 void FinanceManager::displayExpenses()
 {
+    expenses = AuxiliaryMethods::sortingExpensesByDate(expenses);
     system("cls");
     if (!expenses.empty()) {
         cout << "             >>> EXPENSES <<<" << endl;
@@ -142,6 +144,12 @@ void FinanceManager::displayExpenses()
         cout << endl << "You did not add expenses." << endl << endl;
     }
     system("pause");
+}
+
+void FinanceManager::displayIncomesAndExpenses()
+{
+    displayIncomes();
+    displayExpenses();
 }
 
 void FinanceManager::displayIncomeData(Income income)
@@ -169,8 +177,7 @@ void FinanceManager::displayExpenseData(Expense expense)
     cout << "Date:          " << newDate << endl;
     cout << "Category:      " << expense.getItem() << endl;
     cout << "Amount:        " << expense.getAmount() << endl;
-}
-
+}   
 
 void FinanceManager::addIncome()
 {

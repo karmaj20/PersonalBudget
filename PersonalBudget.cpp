@@ -63,3 +63,8 @@ void PersonalBudget::displayExpenses()
 {
 	financeManager->displayExpenses();
 }
+
+void PersonalBudget::displayIncomesAndExpenses()
+{
+	financeManager->displayIncomesAndExpenses();
+}
