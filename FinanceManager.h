@@ -28,9 +28,7 @@ class FinanceManager {
 	void displayExpenseData(Expense expense);
 	IncomesFile incomesFile;
 	ExpensesFile expensesFile;
-	float displayIncomes();
-	float displayExpenses();
-	void helper(int firstDate, int secondDate);
+	void displayIncomesAndExpenses(int firstDate, int secondDate);
 public:
 	FinanceManager(string filenameWithIncomes, string filenameWithExpenses, int idLoggedUser) :
 		incomesFile(filenameWithIncomes), expensesFile(filenameWithExpenses), ID_LOGGED_USER(idLoggedUser)
@@ -38,7 +36,6 @@ public:
 		incomes = incomesFile.readIncomesFromFile(ID_LOGGED_USER);
 		expenses = expensesFile.readExpensesFromFile(ID_LOGGED_USER);
 	};
-	void displayIncomesAndExpenses();
 
 	void addIncome();
 	void addExpense();

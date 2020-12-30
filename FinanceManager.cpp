@@ -40,43 +40,7 @@ void FinanceManager::currentMonthBalance()
 
     incomes = AuxiliaryMethods::sortingIncomesByDate(incomes);
     expenses = AuxiliaryMethods::sortingExpensesByDate(expenses);
-    helper(firstDateHelper, secondDateHelper);
-    /*
-    if (!incomes.empty()) {
-        cout << "             >>> INCOMES <<<" << endl;
-        cout << "-----------------------------------------------" << endl;
-        for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
-            if (itr->getDate() > firstDateHelper && itr->getDate() < secondDateHelper) {
-                incomesSum += itr->getAmount();
-                displayIncomeData(*itr);
-            }
-        }
-        cout << endl;
-    }
-    else {
-        cout << endl << "You did not add incomes." << endl << endl;
-    }
-    if (!expenses.empty()) {
-        cout << "             >>> EXPENSES <<<" << endl;
-        cout << "-----------------------------------------------" << endl;
-        for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
-            if (itr->getDate() > firstDateHelper && itr->getDate() < secondDateHelper) {
-                expensesSum += itr->getAmount();
-                displayExpenseData(*itr);
-            }
-        }
-        cout << endl;
-    }
-    else {
-        cout << endl << "You did not add epenses." << endl << endl;
-    }
-
-    float balance = incomesSum - expensesSum;
-    cout << "Your total incomes this period: " << incomesSum << endl;
-    cout << "Your total expenses this period: " << expensesSum << endl;
-    cout << "Total balance: " << balance << endl;
-    system("pause");
-    */
+    displayIncomesAndExpenses(firstDateHelper, secondDateHelper);
 }
 
 void FinanceManager::previousMonthBalance()
@@ -124,43 +88,7 @@ void FinanceManager::previousMonthBalance()
 
     incomes = AuxiliaryMethods::sortingIncomesByDate(incomes);
     expenses = AuxiliaryMethods::sortingExpensesByDate(expenses);
-    helper(firstDateHelper, secondDateHelper);
-    /*+
-    if (!incomes.empty()) {
-        cout << "             >>> INCOMES <<<" << endl;
-        cout << "-----------------------------------------------" << endl;
-        for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
-            if (itr->getDate() > firstDateHelper && itr->getDate() < secondDateHelper) {
-                incomesSum += itr->getAmount();
-                displayIncomeData(*itr);
-            }
-        }
-        cout << endl;
-    }
-    else {
-        cout << endl << "You did not add incomes." << endl << endl;
-    }
-    if (!expenses.empty()) {
-        cout << "             >>> EXPENSES <<<" << endl;
-        cout << "-----------------------------------------------" << endl;
-        for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
-            if (itr->getDate() > firstDateHelper && itr->getDate() < secondDateHelper) {
-                expensesSum += itr->getAmount();
-                displayExpenseData(*itr);
-            }
-        }
-        cout << endl;
-    }
-    else {
-        cout << endl << "You did not add epenses." << endl << endl;
-    }
-
-    float balance = incomesSum - expensesSum;
-    cout << "Your total incomes this period: " << incomesSum << endl;
-    cout << "Your total expenses this period: " << expensesSum << endl;
-    cout << "Total balance: " << balance << endl;
-    system("pause");
-    */
+    displayIncomesAndExpenses(firstDateHelper, secondDateHelper);
 }
 
 void FinanceManager::chosenPeriodBalance()
@@ -174,46 +102,10 @@ void FinanceManager::chosenPeriodBalance()
     incomes = AuxiliaryMethods::sortingIncomesByDate(incomes);
     expenses = AuxiliaryMethods::sortingExpensesByDate(expenses);
 
-    helper(firstDate, secondDate);
-    /*
-    if (!incomes.empty()) {
-        cout << "             >>> INCOMES <<<" << endl;
-        cout << "-----------------------------------------------" << endl;
-        for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
-            if (itr->getDate() > firstDate && itr->getDate() < secondDate) {
-                incomesSum += itr->getAmount();
-                displayIncomeData(*itr);
-            }
-        }
-        cout << endl;
-    }
-    else {
-        cout << endl << "You did not add incomes." << endl << endl;
-    }
-    if (!expenses.empty()) {
-        cout << "             >>> EXPENSES <<<" << endl;
-        cout << "-----------------------------------------------" << endl;
-        for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
-            if (itr->getDate() > firstDate && itr->getDate() < secondDate) {
-                expensesSum += itr->getAmount();
-                displayExpenseData(*itr);
-            }
-        }
-        cout << endl;
-    }
-    else {
-        cout << endl << "You did not add epenses." << endl << endl;
-    }
-
-    float balance = incomesSum - expensesSum;
-    cout << "Your total incomes this period: "  << incomesSum << endl;
-    cout << "Your total expenses this period: " << expensesSum << endl;
-    cout << "Total balance: "                   << balance << endl;
-    system("pause");
-    */
+    displayIncomesAndExpenses(firstDate, secondDate);
 }
 
-void FinanceManager::helper(int firstDate, int secondDate)
+void FinanceManager::displayIncomesAndExpenses(int firstDate, int secondDate)
 {
     float incomesSum = 0.0, expensesSum = 0.0;
     if (!incomes.empty()) {
