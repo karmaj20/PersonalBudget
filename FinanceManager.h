@@ -5,6 +5,7 @@
 #include <time.h>
 #include <string>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 #include "Income.h"
@@ -36,8 +37,10 @@ public:
 		incomes = incomesFile.readIncomesFromFile(ID_LOGGED_USER);
 		expenses = expensesFile.readExpensesFromFile(ID_LOGGED_USER);
 	};
-	void displayIncomes();
-	void displayExpenses();
+
+	float displayIncomes();
+	float displayExpenses();
+	void displayIncomesAndExpenses();
 
 	void addIncome();
 	void addExpense();

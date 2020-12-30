@@ -26,7 +26,7 @@ void IncomesFile::addIncomeToFile(Income income)
 	xml.AddElem("Date", newDate);
 	xml.AddElem("Item", income.getItem());
 	xml.AddElem("Amount", amountAsString);
-
+	lastIncomeId++;
 	xml.Save(getFilename());
 }
 

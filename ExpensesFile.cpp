@@ -26,7 +26,7 @@ void ExpensesFile::addExpenseToFile(Expense expense)
 	xml.AddElem("Date", newDate);
 	xml.AddElem("Item", expense.getItem());
 	xml.AddElem("Amount", amountAsString);
-
+	lastExpenseId++;
 
 	xml.Save(getFilename());
 }

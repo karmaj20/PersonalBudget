@@ -110,13 +110,16 @@ int FinanceManager::choseDate()
     return AuxiliaryMethods::stringToIntConverter(date);
 }
 
-void FinanceManager::displayIncomes()
+float FinanceManager::displayIncomes()
 {
+    incomes = AuxiliaryMethods::sortingIncomesByDate(incomes);
+    float sum = 0.0;
     system("cls");
     if (!incomes.empty()) {
         cout << "             >>> INCOMES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
+            sum += itr->getAmount();
             displayIncomeData(*itr);
         }
         cout << endl;
@@ -125,15 +128,19 @@ void FinanceManager::displayIncomes()
         cout << endl << "You did not add incomes." << endl << endl;
     }
     system("pause");
+    return sum;
 }
 
-void FinanceManager::displayExpenses()
+float FinanceManager::displayExpenses()
 {
+    expenses = AuxiliaryMethods::sortingExpensesByDate(expenses);
+    float sum = 0.0;
     system("cls");
     if (!expenses.empty()) {
         cout << "             >>> EXPENSES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
+            sum += itr->getAmount();
             displayExpenseData(*itr);
         }
         cout << endl;
@@ -142,6 +149,20 @@ void FinanceManager::displayExpenses()
         cout << endl << "You did not add expenses." << endl << endl;
     }
     system("pause");
+    return sum;
+}
+
+void FinanceManager::displayIncomesAndExpenses()
+{
+    float sumIncomes = 0.0, sumExpenses = 0.0, balance = 0.0;
+    sumIncomes = displayIncomes();
+    sumExpenses = displayExpenses();
+
+    balance = sumIncomes - sumExpenses;
+
+    cout << "Your total incomes this period: " << sumIncomes << endl;
+    cout << "Your total expenses this period: " << sumExpenses << endl;
+    cout << "Difference between incomes and expenses: " << balance << endl;
 }
 
 void FinanceManager::displayIncomeData(Income income)
@@ -150,11 +171,9 @@ void FinanceManager::displayIncomeData(Income income)
     int date = income.getDate();
     newDate = AuxiliaryMethods::dateConverter(date);
 
-    cout << "Income Id:     " << income.getIncomeId() << endl;
-    cout << "User Id:       " << income.getUserId() << endl;
-    cout << "Date:          " << newDate << endl;
-    cout << "Category:      " << income.getItem() << endl;
-    cout << "Amount:        " << income.getAmount() << endl;
+    cout << " Date: "             << newDate;
+    cout << " Category: "       << income.getItem();
+    cout << " Cost: "      << income.getAmount() << endl;
         
 }
 
@@ -164,13 +183,10 @@ void FinanceManager::displayExpenseData(Expense expense)
     int date = expense.getDate();
     newDate = AuxiliaryMethods::dateConverter(date);
 
-    cout << "Expense Id:    " << expense.getExpenseId() << endl;
-    cout << "User Id:       " << expense.getUserId() << endl;
-    cout << "Date:          " << newDate << endl;
-    cout << "Category:      " << expense.getItem() << endl;
-    cout << "Amount:        " << expense.getAmount() << endl;
-}
-
+    cout << " Date: "            << newDate;
+    cout << " Category: "      << expense.getItem();
+    cout << " Cost: "     << expense.getAmount() << endl;
+}   
 
 void FinanceManager::addIncome()
 {
