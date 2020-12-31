@@ -12,7 +12,6 @@ void FinanceManager::addIncome()
 
 void FinanceManager::addExpense()
 {
-    
     Expense expense = giveNewExpenseData();
     expenses.push_back(expense);
     expensesFile.addExpenseToFile(expense);
@@ -149,6 +148,7 @@ Income FinanceManager::giveNewIncomeData()
     Income income;
     int incomeId = 0, userId = 0, date = 0;
     string item = "";
+    string auxAmount = "";
     float amount = 0.0;
     
     cout << "           >>>INCOME MENU<<<          " << endl;
@@ -167,7 +167,9 @@ Income FinanceManager::giveNewIncomeData()
     income.setItem(item);
 
     cout << "Write amount of income: ";
-    cin >> amount;
+    cin >> auxAmount;
+    auxAmount = changeCommaToDot(auxAmount);
+    amount = AuxiliaryMethods::stringToFloatConverter(auxAmount);
 
     income.setIncomeId(incomesFile.loadLastIncomeId() + 1);
     income.setUserId(ID_LOGGED_USER);
@@ -183,6 +185,7 @@ Expense FinanceManager::giveNewExpenseData()
     Expense expense;
     int expenseId = 0, userId = 0, date = 0;
     string item = "";
+    string auxAmount = "";
     float amount = 0.0;
 
     cout << "           >>>EXPENSE MENU<<<          " << endl;
@@ -201,7 +204,9 @@ Expense FinanceManager::giveNewExpenseData()
     expense.setItem(item);
 
     cout << "Write amount of expense: ";
-    cin >> amount;
+    cin >> auxAmount;
+    auxAmount = changeCommaToDot(auxAmount);
+    amount = AuxiliaryMethods::stringToFloatConverter(auxAmount);
 
     expense.setExpenseId(expensesFile.loadLastExpenseId() + 1);
     expense.setUserId(ID_LOGGED_USER);
@@ -252,22 +257,23 @@ int FinanceManager::presentDate()
 
 int FinanceManager::choseDate()
 {
-    //int year, month, day;
+    int newDate;
     string date;
-    cout << "Write date in format rrrr-mm-dd: ";
-    cin >> date;
+    do {
+        cout << "Write date in format rrrr-mm-dd: ";
+        cin >> date;
+        date.erase(4, 1);
+        date.erase(6, 1);
+        newDate = AuxiliaryMethods::stringToIntConverter(date);
+    } while (checkDateCorectness(newDate) == false);
+
+    date = AuxiliaryMethods::dateConverter(newDate);
     vector <string> partOfDateContainer;
     stringstream ss(date);
     string item;
     while (getline(ss, item, '-')) {
         partOfDateContainer.push_back(item);
     }
-
-    /*
-    year = AuxiliaryMethods::stringToIntConverter(el[0]);
-    month = AuxiliaryMethods::stringToIntConverter(el[1]);
-    day = AuxiliaryMethods::stringToIntConverter(el[2]);
-    */
 
     date = partOfDateContainer[0] + partOfDateContainer[1] + partOfDateContainer[2];
 
@@ -297,3 +303,84 @@ void FinanceManager::displayExpenseData(Expense expense)
     cout << " Cost: "           << expense.getAmount() << endl;
 }   
 
+bool FinanceManager::checkDateCorectness(int date)
+{
+    bool hasTheDateCorrectFormat = true;
+    int year, month, day;
+    string newDate = AuxiliaryMethods::intToStringConverter(date);
+    string tempYear = newDate.substr(0, 4);
+    string tempMonth = newDate.substr(4, 2);
+    string tempDay = newDate.substr(6, 2);
+
+    year = AuxiliaryMethods::stringToIntConverter(tempYear);
+    month = AuxiliaryMethods::stringToIntConverter(tempMonth);
+    day = AuxiliaryMethods::stringToIntConverter(tempDay);
+
+    switch (month) {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        if (day < 1 || day > 31) {
+            hasTheDateCorrectFormat = false;
+            return hasTheDateCorrectFormat;
+        }
+        break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        if (day < 1 || day > 30) {
+            hasTheDateCorrectFormat = false;
+            return hasTheDateCorrectFormat;
+        }
+        break;
+    case 2:
+        if (leapyear(year) == true) {
+            if (day < 1 || day > 29) {
+                hasTheDateCorrectFormat = false;
+                return hasTheDateCorrectFormat;
+            }
+        }
+        else {
+            if (day < 1 || day > 28) {
+                hasTheDateCorrectFormat = false;
+                return hasTheDateCorrectFormat;
+            }
+        }
+        break;
+    }
+    if ((year < 2000) || (month < 1) || (month > 12)) {
+        hasTheDateCorrectFormat = false;
+        return hasTheDateCorrectFormat;
+    }
+    return hasTheDateCorrectFormat;
+}
+
+bool FinanceManager::leapyear(int year) {
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+string FinanceManager::changeCommaToDot(string amount)
+{
+    string amountWithDot = "";
+
+    for (int characterPosition = 0; characterPosition < amount.size(); characterPosition++)
+    {
+        if (amount[characterPosition] == ',')
+        {
+            amountWithDot += ".";
+            continue;
+        }
+        amountWithDot += amount[characterPosition];
+    }
+    return amountWithDot;
+}
