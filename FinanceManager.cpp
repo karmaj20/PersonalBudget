@@ -111,7 +111,7 @@ void FinanceManager::displayIncomesAndExpenses(int firstDate, int secondDate)
         cout << "             >>> INCOMES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector<Income>::iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
-            if (itr->getDate() > firstDate && itr->getDate() < secondDate) {
+            if (itr->getDate() >= firstDate && itr->getDate() <= secondDate) {
                 incomesSum += itr->getAmount();
                 displayIncomeData(*itr);
             }
@@ -125,7 +125,7 @@ void FinanceManager::displayIncomesAndExpenses(int firstDate, int secondDate)
         cout << "             >>> EXPENSES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector<Expense>::iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
-            if (itr->getDate() > firstDate && itr->getDate() < secondDate) {
+            if (itr->getDate() >= firstDate && itr->getDate() <= secondDate) {
                 expensesSum += itr->getAmount();
                 displayExpenseData(*itr);
             }
